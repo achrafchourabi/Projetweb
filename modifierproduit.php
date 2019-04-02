@@ -24,15 +24,15 @@ if (isset($_GET['id'])){
 <caption>Modifier produit</caption>
 <tr>
 <td>id</td>
-<td><input type="number" name="id" value="<?PHP echo $id ?>"></td>
+<td><input type="number" name="idcat" value="<?PHP echo $idcat ?>"></td>
 </tr>
 <tr>
 <td>Nom</td>
-<td><input type="text" name="nom" value="<?PHP echo $nom ?>"></td>
+<td><input type="text" name="nomcat" value="<?PHP echo $nomcat ?>"></td>
 </tr>
 <tr>
 <td>idsouscat</td>
-<td><input type="number" name="idsouscat" value="<?PHP echo $idsouscat ?>"></td>
+<td><input type="number" name="idcat" value="<?PHP echo $idcat ?>"></td>
 </tr>
 <tr>
 <td>idcat</td>
@@ -40,19 +40,19 @@ if (isset($_GET['id'])){
 </tr>
 <tr>
 <td>prix</td>
-<td><input type="number" name="prix" value="<?PHP echo $prix ?>"></td>
+<td><input type="number" name="idcat" value="<?PHP echo $idcat ?>"></td>
 </tr>
 <tr>
 <td>qte</td>
-<td><input type="number" name="qte" value="<?PHP echo $qte ?>"></td>
+<td><input type="number" name="idcat" value="<?PHP echo $idcat ?>"></td>
 </tr>
 <tr>
 <td>etat</td>
-<td><input type="number" name="etat" value="<?PHP echo $etat ?>"></td>
+<td><input type="number" name="idcat" value="<?PHP echo $idcat ?>"></td>
 </tr>
 <tr>
 <td>remise</td>
-<td><input type="number" name="remise" value="<?PHP echo $remise ?>"></td>
+<td><input type="number" name="idcat" value="<?PHP echo $idcat ?>"></td>
 </tr>
 
 
@@ -62,7 +62,7 @@ if (isset($_GET['id'])){
 </tr>
 <tr>
 <td></td>
-<td><input type="hidden" name="id_ini" value="<?PHP echo $_GET['id'];?>"></td>
+<td><input type="hidden" name="idcat_ini" value="<?PHP echo $_GET['id'];?>"></td>
 </tr>
 </table>
 </form>

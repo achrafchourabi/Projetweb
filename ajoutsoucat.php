@@ -12,7 +12,7 @@ var_dump($employe1);
 //Partie3
 $souscategorie1C=new souscategorieC();
 $souscategorie1C->ajoutersouscategorie($SousCategorie1);
-header('Location: index.php');
+header('Location: affichersouscategorie.php');
 	
 }else{
 	echo "vérifier les champs";
