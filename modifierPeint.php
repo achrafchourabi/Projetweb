@@ -1,7 +1,10 @@
 <?PHP
-include "../../Services/entities/Climatiseur.php";
-  $clim=new Climatiseur(1,'shit','fuck','hey','lol','nice');
-$listeClim=$clim->afficherClim();
+
+ include "../../Services/entities/peinture.php";
+  $pein=new Peint(1,'shit','fuck','hey','nice');
+$listePeint=$pein->afficherPeinture();
+
+
 
 
 
@@ -391,16 +394,16 @@ $listeClim=$clim->afficherClim();
           <?php
 
 
-  if (isset($_GET['ID'])){
-  $climC=new Climatiseur(1,'shit','fuck','hey','lol','nice');
-    $climM=$climC->recupererClim($_GET['ID']);
-  foreach($climM as $row){
-    $ID=$row['ID'];
-    $demande=$row['demande'];
-    $lieu=$row['lieu'];
-    $secteur=$row['secteur'];
-    $details=$row['details'];
-    $nom=$row['nom'];
+  if (isset($_GET['ID_peint'])){
+  $peintC=new Peint(1,'shit','fuck','hey','nice');
+    $peintM=$peintC->recupererPeint($_GET['ID_peint']);
+  foreach($peintM as $row){
+    $ID_peint=$row['ID_peint'];
+    $demande_peint=$row['demande_peint'];
+    $lieu_peint=$row['lieu_peint'];
+  
+    $details_peint=$row['details_peint'];
+    $nom_peint=$row['nom_peint'];
     
     
 
@@ -409,30 +412,30 @@ $listeClim=$clim->afficherClim();
 <table class="wrapper">
 <caption> <h3 h6 align="center" style ="color:black">Modifier Service</caption></h3>
 <tr>
-<th nom="ID" class="hidden-phone">ID</th>
-                    <th name="nom" class="hidden-phone">Nom</th>
-                    <th name="demande" class="hidden-phone">demande</th>
-                     <th name="lieu" class="hidden-phone">lieu</th>
-                    <th name="secteur" class="hidden-phone">secteur</th>
-                  <th name="details" class="hidden-phone">details</th> </tr>  
+<th nom="ID_peint" class="hidden-phone">ID</th>
+                    <th name="nom_peint" class="hidden-phone">Nom</th>
+                    <th name="demande_peint" class="hidden-phone">demande</th>
+                     <th name="lieu_peint" class="hidden-phone">lieu</th>
+                   
+                  <th name="details_peint" class="hidden-phone">details</th> </tr>  
 <tr>
-<td class="hidden-phone"><input type="number" name="ID" value="<?PHP echo $ID ?>"></td>
-                      <td class="hidden-phone"><input type="text" name="nom" value="<?PHP echo $nom?>"></td>
-                    <td class="center hidden-phone" ><input type="text" name="demande" value="<?PHP echo $demande ?>"></td>
-                      <td class="center hidden-phone" ><input type="text" name="lieu" value="<?PHP echo $lieu ?>"></td>
-                    <td class="center hidden-phone"><input type="text" name="secteur" value="<?PHP echo $secteur?>"></td>
-                     <td class="center hidden-phone"><input type="text" name="details" value="<?PHP echo $details?>"></td>
+<td class="hidden-phone"><input type="number" name="ID_peint" value="<?PHP echo $ID_peint ?>"></td>
+                      <td class="hidden-phone"><input type="text" name="nom_peint" value="<?PHP echo $nom_peint?>"></td>
+                    <td class="center hidden-phone" ><input type="text" name="demande_peint" value="<?PHP echo $demande_peint ?>"></td>
+                      <td class="center hidden-phone" ><input type="text" name="lieu_peint" value="<?PHP echo $lieu_peint ?>"></td>
+                   
+                     <td class="center hidden-phone"><input type="text" name="details_peint" value="<?PHP echo $details_peint?>"></td>
  </tr>                    
 <tr>
 
 <tr>
 
 <td></td>
-<td><input type="submit" name="modifier" value="modifier" href="../back_resto.php"></td>
+<td><input type="submit" name="modifier" value="modifier" href="../back_peint.php"></td>
 </tr>
 <tr>
 
-<td><input type="hidden" name="ID" value="<?PHP echo $_GET['ID'];?>"></input></td>
+<td><input type="hidden" name="ID_peint" value="<?PHP echo $_GET['ID_peint'];?>"></input></td>
 </tr>
 </table>
 
@@ -441,9 +444,9 @@ $listeClim=$clim->afficherClim();
   }
 }
 if (isset($_POST['modifier'])){
-  $clima=new Climatiseur($_POST['ID'],$_POST['demande'],$_POST['lieu'],$_POST['secteur'],$_POST['details'],$_POST['nom']);
-  $climaC=$clima->modifierclim($clima,$_POST['ID']);
-  echo $_POST['ID'];
+  $pein=new Peint($_POST['ID_peint'],$_POST['demande_peint'],$_POST['lieu_peint'],$_POST['details_peint'],$_POST['nom_peint']);
+  $peintC=$pein->modifierPeint($pein,$_POST['ID_peint']);
+  echo $_POST['ID_peint'];
  
 }
    ?>

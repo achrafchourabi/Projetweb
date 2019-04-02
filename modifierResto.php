@@ -1,7 +1,8 @@
 <?PHP
-include "../../Services/entities/Climatiseur.php";
-  $clim=new Climatiseur(1,'shit','fuck','hey','lol','nice');
-$listeClim=$clim->afficherClim();
+include "../../Services/entities/restaurant.php";
+ $resto=new Resto(1,'shit','fuck','hey','lol','nice');
+$listeResto=$resto->afficherRestaurant();
+
 
 
 
@@ -391,16 +392,16 @@ $listeClim=$clim->afficherClim();
           <?php
 
 
-  if (isset($_GET['ID'])){
-  $climC=new Climatiseur(1,'shit','fuck','hey','lol','nice');
-    $climM=$climC->recupererClim($_GET['ID']);
-  foreach($climM as $row){
-    $ID=$row['ID'];
-    $demande=$row['demande'];
-    $lieu=$row['lieu'];
-    $secteur=$row['secteur'];
-    $details=$row['details'];
-    $nom=$row['nom'];
+  if (isset($_GET['ID_resto'])){
+  $restC=new Resto(1,'shit','fuck','hey','lol','nice');
+    $restM=$restC->recupererResto($_GET['ID_resto']);
+  foreach($restM as $row){
+    $ID_resto=$row['ID_resto'];
+    $demande_resto=$row['demande_resto'];
+    $lieu_resto=$row['lieu_resto'];
+    $secteur_resto=$row['secteur_resto'];
+    $details_resto=$row['details_resto'];
+    $nom_resto=$row['nom_resto'];
     
     
 
@@ -409,19 +410,19 @@ $listeClim=$clim->afficherClim();
 <table class="wrapper">
 <caption> <h3 h6 align="center" style ="color:black">Modifier Service</caption></h3>
 <tr>
-<th nom="ID" class="hidden-phone">ID</th>
-                    <th name="nom" class="hidden-phone">Nom</th>
-                    <th name="demande" class="hidden-phone">demande</th>
-                     <th name="lieu" class="hidden-phone">lieu</th>
-                    <th name="secteur" class="hidden-phone">secteur</th>
-                  <th name="details" class="hidden-phone">details</th> </tr>  
+<th nom="ID_resto" class="hidden-phone">ID_resto</th>
+                    <th name="nom_resto" class="hidden-phone">Nom</th>
+                    <th name="demande_resto" class="hidden-phone">demande</th>
+                     <th name="lieu_resto" class="hidden-phone">lieu</th>
+                    <th name="secteur_resto" class="hidden-phone">secteur</th>
+                  <th name="details_resto" class="hidden-phone">details</th> </tr>  
 <tr>
-<td class="hidden-phone"><input type="number" name="ID" value="<?PHP echo $ID ?>"></td>
-                      <td class="hidden-phone"><input type="text" name="nom" value="<?PHP echo $nom?>"></td>
-                    <td class="center hidden-phone" ><input type="text" name="demande" value="<?PHP echo $demande ?>"></td>
-                      <td class="center hidden-phone" ><input type="text" name="lieu" value="<?PHP echo $lieu ?>"></td>
-                    <td class="center hidden-phone"><input type="text" name="secteur" value="<?PHP echo $secteur?>"></td>
-                     <td class="center hidden-phone"><input type="text" name="details" value="<?PHP echo $details?>"></td>
+<td class="hidden-phone"><input type="number" name="ID_resto" value="<?PHP echo $ID_resto ?>"></td>
+                      <td class="hidden-phone"><input type="text" name="nom_resto" value="<?PHP echo $nom_resto?>"></td>
+                    <td class="center hidden-phone" ><input type="text" name="demande_resto" value="<?PHP echo $demande_resto ?>"></td>
+                      <td class="center hidden-phone" ><input type="text" name="lieu_resto" value="<?PHP echo $lieu_resto ?>"></td>
+                    <td class="center hidden-phone"><input type="text" name="secteur_resto" value="<?PHP echo $secteur_resto?>"></td>
+                     <td class="center hidden-phone"><input type="text" name="details_resto" value="<?PHP echo $details_resto?>"></td>
  </tr>                    
 <tr>
 
@@ -432,7 +433,7 @@ $listeClim=$clim->afficherClim();
 </tr>
 <tr>
 
-<td><input type="hidden" name="ID" value="<?PHP echo $_GET['ID'];?>"></input></td>
+<td><input type="hidden" name="ID_resto" value="<?PHP echo $_GET['ID_resto'];?>"></input></td>
 </tr>
 </table>
 
@@ -441,11 +442,12 @@ $listeClim=$clim->afficherClim();
   }
 }
 if (isset($_POST['modifier'])){
-  $clima=new Climatiseur($_POST['ID'],$_POST['demande'],$_POST['lieu'],$_POST['secteur'],$_POST['details'],$_POST['nom']);
-  $climaC=$clima->modifierclim($clima,$_POST['ID']);
-  echo $_POST['ID'];
- 
+  $resta=new Resto($_POST['ID_resto'],$_POST['demande_resto'],$_POST['lieu_resto'],$_POST['secteur_resto'],$_POST['details_resto'],$_POST['nom_resto']);
+  $restC=$resta->modifierResto($resta,$_POST['ID_resto']);
+  echo $_POST['ID_resto'];
+
 }
+
    ?>
      
                   

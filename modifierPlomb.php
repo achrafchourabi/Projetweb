@@ -1,7 +1,9 @@
 <?PHP
-include "../../Services/entities/Climatiseur.php";
-  $clim=new Climatiseur(1,'shit','fuck','hey','lol','nice');
-$listeClim=$clim->afficherClim();
+include "../../Services/entities/plomberie.php";
+  $plomb=new Plomb(1,'shit','fuck','hey','lol');
+$listePlomb=$plomb->afficherPlomb();
+
+
 
 
 
@@ -391,16 +393,16 @@ $listeClim=$clim->afficherClim();
           <?php
 
 
-  if (isset($_GET['ID'])){
-  $climC=new Climatiseur(1,'shit','fuck','hey','lol','nice');
-    $climM=$climC->recupererClim($_GET['ID']);
-  foreach($climM as $row){
-    $ID=$row['ID'];
-    $demande=$row['demande'];
-    $lieu=$row['lieu'];
-    $secteur=$row['secteur'];
-    $details=$row['details'];
-    $nom=$row['nom'];
+  if (isset($_GET['ID_plomb'])){
+  $plombC=new Plomb(1,'shit','fuck','hey','nice');
+    $plombM=$plombC->recupererPlomb($_GET['ID_plomb']);
+  foreach($plombM as $row){
+    $ID_plomb=$row['ID_plomb'];
+    $demande_plomb=$row['demande_plomb'];
+    $lieu_plomb=$row['lieu_plomb'];
+  
+    $details_plomb=$row['details_plomb'];
+    $nom_plomb=$row['nom_plomb'];
     
     
 
@@ -409,30 +411,30 @@ $listeClim=$clim->afficherClim();
 <table class="wrapper">
 <caption> <h3 h6 align="center" style ="color:black">Modifier Service</caption></h3>
 <tr>
-<th nom="ID" class="hidden-phone">ID</th>
-                    <th name="nom" class="hidden-phone">Nom</th>
-                    <th name="demande" class="hidden-phone">demande</th>
-                     <th name="lieu" class="hidden-phone">lieu</th>
-                    <th name="secteur" class="hidden-phone">secteur</th>
-                  <th name="details" class="hidden-phone">details</th> </tr>  
+<th nom="ID_plomb" class="hidden-phone">ID</th>
+                    <th name="nom_plomb" class="hidden-phone">Nom</th>
+                    <th name="demande_plomb" class="hidden-phone">demande</th>
+                     <th name="lieu_plomb" class="hidden-phone">lieu</th>
+                   
+                  <th name="details_plomb" class="hidden-phone">details</th> </tr>  
 <tr>
-<td class="hidden-phone"><input type="number" name="ID" value="<?PHP echo $ID ?>"></td>
-                      <td class="hidden-phone"><input type="text" name="nom" value="<?PHP echo $nom?>"></td>
-                    <td class="center hidden-phone" ><input type="text" name="demande" value="<?PHP echo $demande ?>"></td>
-                      <td class="center hidden-phone" ><input type="text" name="lieu" value="<?PHP echo $lieu ?>"></td>
-                    <td class="center hidden-phone"><input type="text" name="secteur" value="<?PHP echo $secteur?>"></td>
-                     <td class="center hidden-phone"><input type="text" name="details" value="<?PHP echo $details?>"></td>
+<td class="hidden-phone"><input type="number" name="ID_plomb" value="<?PHP echo $ID_plomb ?>"></td>
+                      <td class="hidden-phone"><input type="text" name="nom_plomb" value="<?PHP echo $nom_plomb?>"></td>
+                    <td class="center hidden-phone" ><input type="text" name="demande_plomb" value="<?PHP echo $demande_plomb ?>"></td>
+                      <td class="center hidden-phone" ><input type="text" name="lieu_plomb" value="<?PHP echo $lieu_plomb ?>"></td>
+                   
+                     <td class="center hidden-phone"><input type="text" name="details_plomb" value="<?PHP echo $details_plomb?>"></td>
  </tr>                    
 <tr>
 
 <tr>
 
 <td></td>
-<td><input type="submit" name="modifier" value="modifier" href="../back_resto.php"></td>
+<td><input type="submit" name="modifier" value="modifier" href="../back_plomb.php"></td>
 </tr>
 <tr>
 
-<td><input type="hidden" name="ID" value="<?PHP echo $_GET['ID'];?>"></input></td>
+<td><input type="hidden" name="ID_plomb" value="<?PHP echo $_GET['ID_plomb'];?>"></input></td>
 </tr>
 </table>
 
@@ -441,9 +443,9 @@ $listeClim=$clim->afficherClim();
   }
 }
 if (isset($_POST['modifier'])){
-  $clima=new Climatiseur($_POST['ID'],$_POST['demande'],$_POST['lieu'],$_POST['secteur'],$_POST['details'],$_POST['nom']);
-  $climaC=$clima->modifierclim($clima,$_POST['ID']);
-  echo $_POST['ID'];
+  $plomb=new Plomb($_POST['ID_plomb'],$_POST['demande_plomb'],$_POST['lieu_plomb'],$_POST['details_plomb'],$_POST['nom_plomb']);
+  $plombC=$plomb->modifierPlomb($plomb,$_POST['ID_plomb']);
+  echo $_POST['ID_plomb'];
  
 }
    ?>

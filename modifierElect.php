@@ -1,7 +1,9 @@
 <?PHP
-include "../../Services/entities/Climatiseur.php";
-  $clim=new Climatiseur(1,'shit','fuck','hey','lol','nice');
-$listeClim=$clim->afficherClim();
+include "../../Services/entities/Elect.php";
+  $elec=new Elect(1,'shit','hey','lol','nice');
+$listeElect=$elec->afficherElectricity();
+
+
 
 
 
@@ -391,16 +393,16 @@ $listeClim=$clim->afficherClim();
           <?php
 
 
-  if (isset($_GET['ID'])){
-  $climC=new Climatiseur(1,'shit','fuck','hey','lol','nice');
-    $climM=$climC->recupererClim($_GET['ID']);
-  foreach($climM as $row){
-    $ID=$row['ID'];
-    $demande=$row['demande'];
-    $lieu=$row['lieu'];
-    $secteur=$row['secteur'];
-    $details=$row['details'];
-    $nom=$row['nom'];
+  if (isset($_GET['ID_elect'])){
+  $electC=new Elect(1,'shit','fuck','hey','nice');
+    $electM=$electC->recupererElect($_GET['ID_elect']);
+  foreach($electM as $row){
+    $ID_elect=$row['ID_elect'];
+    $demande_elect=$row['demande_elect'];
+    $lieu_elect=$row['lieu_elect'];
+  
+    $details_elect=$row['details_elect'];
+    $nom_elect=$row['nom_elect'];
     
     
 
@@ -409,30 +411,30 @@ $listeClim=$clim->afficherClim();
 <table class="wrapper">
 <caption> <h3 h6 align="center" style ="color:black">Modifier Service</caption></h3>
 <tr>
-<th nom="ID" class="hidden-phone">ID</th>
-                    <th name="nom" class="hidden-phone">Nom</th>
-                    <th name="demande" class="hidden-phone">demande</th>
-                     <th name="lieu" class="hidden-phone">lieu</th>
-                    <th name="secteur" class="hidden-phone">secteur</th>
-                  <th name="details" class="hidden-phone">details</th> </tr>  
+<th nom="ID_elect" class="hidden-phone">ID</th>
+                    <th name="nom_elect" class="hidden-phone">Nom</th>
+                    <th name="demande_elect" class="hidden-phone">demande</th>
+                     <th name="lieu_elect" class="hidden-phone">lieu</th>
+                   
+                  <th name="details_elect" class="hidden-phone">details</th> </tr>  
 <tr>
-<td class="hidden-phone"><input type="number" name="ID" value="<?PHP echo $ID ?>"></td>
-                      <td class="hidden-phone"><input type="text" name="nom" value="<?PHP echo $nom?>"></td>
-                    <td class="center hidden-phone" ><input type="text" name="demande" value="<?PHP echo $demande ?>"></td>
-                      <td class="center hidden-phone" ><input type="text" name="lieu" value="<?PHP echo $lieu ?>"></td>
-                    <td class="center hidden-phone"><input type="text" name="secteur" value="<?PHP echo $secteur?>"></td>
-                     <td class="center hidden-phone"><input type="text" name="details" value="<?PHP echo $details?>"></td>
+<td class="hidden-phone"><input type="number" name="ID_elect" value="<?PHP echo $ID_elect ?>"></td>
+                      <td class="hidden-phone"><input type="text" name="nom_elect" value="<?PHP echo $nom_elect?>"></td>
+                    <td class="center hidden-phone" ><input type="text" name="demande_elect" value="<?PHP echo $demande_elect ?>"></td>
+                      <td class="center hidden-phone" ><input type="text" name="lieu_elect" value="<?PHP echo $lieu_elect ?>"></td>
+                   
+                     <td class="center hidden-phone"><input type="text" name="details_elect" value="<?PHP echo $details_elect?>"></td>
  </tr>                    
 <tr>
 
 <tr>
 
 <td></td>
-<td><input type="submit" name="modifier" value="modifier" href="../back_resto.php"></td>
+<td><input type="submit" name="modifier" value="modifier" href="../back_Elect.php"></td>
 </tr>
 <tr>
 
-<td><input type="hidden" name="ID" value="<?PHP echo $_GET['ID'];?>"></input></td>
+<td><input type="hidden" name="ID_elect" value="<?PHP echo $_GET['ID_elect'];?>"></input></td>
 </tr>
 </table>
 
@@ -441,9 +443,9 @@ $listeClim=$clim->afficherClim();
   }
 }
 if (isset($_POST['modifier'])){
-  $clima=new Climatiseur($_POST['ID'],$_POST['demande'],$_POST['lieu'],$_POST['secteur'],$_POST['details'],$_POST['nom']);
-  $climaC=$clima->modifierclim($clima,$_POST['ID']);
-  echo $_POST['ID'];
+  $elec=new Elect($_POST['ID_elect'],$_POST['demande_elect'],$_POST['lieu_elect'],$_POST['details_elect'],$_POST['nom_elect']);
+  $electC=$elec->modifierElect($elec,$_POST['ID_elect']);
+  echo $_POST['ID_elect'];
  
 }
    ?>

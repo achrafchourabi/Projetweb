@@ -1,7 +1,7 @@
 <?PHP
-include "../../Services/entities/Climatiseur.php";
-  $clim=new Climatiseur(1,'shit','fuck','hey','lol','nice');
-$listeClim=$clim->afficherClim();
+include "../../Services/entities/PanierH.php";
+  $pan=new Panier(1,2,5,1.2);
+$listePanier=$pan->afficherPanier();
 
 
 
@@ -391,48 +391,44 @@ $listeClim=$clim->afficherClim();
           <?php
 
 
-  if (isset($_GET['ID'])){
-  $climC=new Climatiseur(1,'shit','fuck','hey','lol','nice');
-    $climM=$climC->recupererClim($_GET['ID']);
-  foreach($climM as $row){
-    $ID=$row['ID'];
-    $demande=$row['demande'];
-    $lieu=$row['lieu'];
-    $secteur=$row['secteur'];
-    $details=$row['details'];
-    $nom=$row['nom'];
-    
-    
+  if (isset($_GET['ID_panier'])){
+  $panC= new Panier(1,2,5,1.2);
+    $panM=$panC->recupererPanier($_GET['ID_panier']);
+  foreach($panM as $row){
+    $ID_panier=$row['ID_panier'];
+    $ID_prod=$row['ID_prod'];
+    $quantite=$row['quantite'];
+    $prix=$row['prix'];
+
 
 ?>
 <form method="POST" >
 <table class="wrapper">
-<caption> <h3 h6 align="center" style ="color:black">Modifier Service</caption></h3>
+<caption> <h3 h6 align="center" style ="color:black">Modifier Panier</caption></h3>
 <tr>
-<th nom="ID" class="hidden-phone">ID</th>
-                    <th name="nom" class="hidden-phone">Nom</th>
-                    <th name="demande" class="hidden-phone">demande</th>
-                     <th name="lieu" class="hidden-phone">lieu</th>
-                    <th name="secteur" class="hidden-phone">secteur</th>
-                  <th name="details" class="hidden-phone">details</th> </tr>  
+
+                     <th><i name="ID_panier" class="fa fa-bullhorn"></i> ID_commande</th>
+                    <th name="ID_prod" class="hidden-phone"><i class="fa fa-question-circle"></i> ID_Produit</th>
+                    <th><i name="quantite" class="fa fa-bookmark"></i> quantitée</th>
+                    <th><i name="prix" class="fa fa-bookmark"></i> Prix</th>
+                   </tr>
 <tr>
-<td class="hidden-phone"><input type="number" name="ID" value="<?PHP echo $ID ?>"></td>
-                      <td class="hidden-phone"><input type="text" name="nom" value="<?PHP echo $nom?>"></td>
-                    <td class="center hidden-phone" ><input type="text" name="demande" value="<?PHP echo $demande ?>"></td>
-                      <td class="center hidden-phone" ><input type="text" name="lieu" value="<?PHP echo $lieu ?>"></td>
-                    <td class="center hidden-phone"><input type="text" name="secteur" value="<?PHP echo $secteur?>"></td>
-                     <td class="center hidden-phone"><input type="text" name="details" value="<?PHP echo $details?>"></td>
+<td class="hidden-phone"><input type="number" readonly="readonly" name="ID_panier" value="<?PHP echo $ID_panier ?>"></td>
+                      <td class="hidden-phone"><input type="text" name="ID_prod" value="<?PHP echo $ID_prod?>"></td>
+                    <td class="center hidden-phone" ><input type="text" name="quantite" value="<?PHP echo $quantite ?>"></td>
+                      <td class="center hidden-phone" ><input type="text" name="prix" value="<?PHP echo $prix ?>"></td>
+                  
  </tr>                    
 <tr>
 
 <tr>
 
 <td></td>
-<td><input type="submit" name="modifier" value="modifier" href="../back_resto.php"></td>
+<td><input type="submit" name="modifier" value="modifier" href="../Panier_back.php"></td>
 </tr>
 <tr>
 
-<td><input type="hidden" name="ID" value="<?PHP echo $_GET['ID'];?>"></input></td>
+<td><input type="hidden" name="ID_panier" value="<?PHP echo $_GET['ID_panier'];?>"></input></td>
 </tr>
 </table>
 
@@ -441,9 +437,9 @@ $listeClim=$clim->afficherClim();
   }
 }
 if (isset($_POST['modifier'])){
-  $clima=new Climatiseur($_POST['ID'],$_POST['demande'],$_POST['lieu'],$_POST['secteur'],$_POST['details'],$_POST['nom']);
-  $climaC=$clima->modifierclim($clima,$_POST['ID']);
-  echo $_POST['ID'];
+  $pan=new Panier($_POST['ID_panier'],$_POST['ID_prod'],$_POST['quantite'],$_POST['prix']);
+  $panC=$pan->modifierPanier($pan,$_POST['ID_panier']);
+  echo $_POST['ID_panier'];
  
 }
    ?>
