@@ -8,8 +8,9 @@ class produit{
 	private $qte;
 		private $etat;
 		private $remise;
+		private $photo ;
 
-	function __construct($id,$nom,$idsouscat,$idcat,$prix,$qte,$etat,$remise){
+	function __construct($id,$nom,$idsouscat,$idcat,$prix,$qte,$etat,$remise,$photo){
 		$this->id=$id;
 		$this->nom=$nom;
 		$this->idsouscat=$idsouscat;
@@ -18,6 +19,7 @@ class produit{
 		$this->qte=$qte;
 		$this->etat=$etat;
 		$this->remise=$remise;
+		$this->photo=$photo ;
 		
 
 	}
@@ -46,7 +48,10 @@ class produit{
 	function getremise(){
 		return $this->remise;
 	}
-
+function getphoto()
+{
+	return $this->photo ;
+}
 	function setNom($nom){
 		$this->nom=$nom;
 	}
