@@ -12,14 +12,58 @@ function afficherproduits ($produit){
 				echo "qte: ".$produit->getqte()."<br>";
 				echo "etat: ".$produit->getetat()."<br>";
 				echo "remise: ".$produit->getremise()."<br>";
+								echo "photo: ".$produit->getphoto()."<br>";
+
 
 
 
 		
 	}
-	
+	 function totalproduit ()
+	{
+		$pdo = config3::getConnexion();
+		$SQL=$pdo->query("SELECT count(*) as total FROM `produit` ") ;
+		$data = $SQL->fetch();
+/*$sommeanswered = $data['total'];*/
+
+/*var_dump($data);*/
+echo "Total Produits : ".$data['total'];
+		  
+
+			}
+
+			function totalproduitsalledebain ()
+			{
+			$pdo = config3::getConnexion();
+		$SQL=$pdo->query("SELECT count(*) as total FROM `produit` where idcat=1 ") ;
+		$data = $SQL->fetch();
+/*$sommeanswered = $data['total'];*/
+
+/*var_dump($data);*/
+echo "Total Produits : ".$data['total'];	
+			}
+			function totalproduitmaisonetjardin ()
+			{
+			$pdo = config3::getConnexion();
+		$SQL=$pdo->query("SELECT count(*) as total FROM `produit` where idcat=2 ") ;
+		$data = $SQL->fetch();
+/*$sommeanswered = $data['total'];*/
+
+/*var_dump($data);*/
+echo "Total Produits : ".$data['total'];	
+			}
+			function totalproduitcuisine ()
+			{
+			$pdo = config3::getConnexion();
+		$SQL=$pdo->query("SELECT count(*) as total FROM `produit` where idcat=3 ") ;
+		$data = $SQL->fetch();
+/*$sommeanswered = $data['total'];*/
+
+/*var_dump($data);*/
+echo "Total Produits : ".$data['total'];	
+			}
 	function ajouterproduit($produit){
-		$sql=" INSERT into produit (id,nom,idsouscat,idcat,prix,qte,etat,remise) values (:id, :nom , :idsouscat, :idcat , :prix , :qte , :etat , :remise)";
+		$sql=" INSERT into produit (id,nom,idsouscat,idcat,prix,qte,etat,remise,photo) values (:id, :nom , :idsouscat, :idcat , :prix , :qte , :etat , :remise , :photo)";
 		$db = config3::getConnexion();
 		try{
         $req=$db->prepare($sql);
@@ -31,6 +75,8 @@ function afficherproduits ($produit){
                 $prix=$produit->getprix();
                 $qte=$produit->getqte();
                 $etat=$produit->getetat();
+                $remise=$produit->getremise();
+                $photo=$produit->getphoto() ;
 
 
         
@@ -42,6 +88,8 @@ function afficherproduits ($produit){
 				$req->bindValue(':qte',$qte);
 				$req->bindValue(':etat',$etat);
 								$req->bindValue(':remise',$remise);
+																$req->bindValue(':photo',$photo);
+
 
 
 
@@ -59,16 +107,98 @@ function afficherproduits ($produit){
 	}
 	
 	function afficherproduit(){
-		$sql="SElECT * From produit";
+		$sql="SELECT * From produit";
+		
+
 		$db = config3::getConnexion();
+
 		try{
 		$liste=$db->query($sql);
-		return $liste;
+		return $liste ;
+		  
+
 		}
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
         }	
-	}
+}
+function afficherproduitsalledebain ()
+{
+$sql="SELECT * From produit where idcat=1";
+		
+
+		$db = config3::getConnexion();
+
+		try{
+		$liste=$db->query($sql);
+		return $liste ;
+		  
+
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+}
+function rechercher ()
+{
+	$db = config3::getConnexion();
+	if ( isset($_GET['rechercher']) AND !empty($_GET['rechercher'])) {
+                	
+                $rechercher = htmlspecialchars($_GET['rechercher'])	;
+$sql="SELECT * From produit where nom like '%$rechercher%'  ";
+		
+
+		
+
+		try{
+		$liste=$db->query($sql);
+		return $liste ;
+		  
+
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+        }
+        else 
+{
+	echo "pas de recherche" ;
+}
+}
+function afficherproduitmaisonetjardin ()
+{
+$sql="SELECT * From produit where idcat=2";
+		
+
+		$db = config3::getConnexion();
+
+		try{
+		$liste=$db->query($sql);
+		return $liste ;
+		  
+
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+}
+	function afficherproduitcuisine ()
+{
+$sql="SELECT * From produit where idcat=3";
+		
+
+		$db = config3::getConnexion();
+
+		try{
+		$liste=$db->query($sql);
+		return $liste ;
+		  
+
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+}
 	function supprimerproduit($id){
 		$sql="DELETE FROM produit where id= :id";
 		$db = config3::getConnexion();
@@ -82,8 +212,8 @@ function afficherproduits ($produit){
             die('Erreur: '.$e->getMessage());
         }
 	}
-	function modifierproduit($produit,$ids){
-		$sql="UPDATE produit SET id=:id, nom=:nom , idsouscat=:idsouscat , idcat=:idcat , prix=:prix , qte=:qte , etat=:etat , remise=:remise WHERE ids=:ids";
+	function modifierproduit($produit,$id){
+		$sql="UPDATE produit SET id=:id, nom=:nom , idsouscat=:idsouscat , idcat=:idcat , prix=:prix , qte=:qte , etat=:etat , remise=:remise , photo=:photo WHERE id=:id";
 		
 		$db = config3::getConnexion();
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
@@ -91,9 +221,17 @@ try{
         $req=$db->prepare($sql);
 		$id=$produit->getid();
         $nom=$produit->getNom();
+                $idsouscat=$produit->getsouscat();
+        $idcat=$produit->getcat();
+        $prix=$produit->getprix();
+        $qte=$produit->getqte();
+        $etat=$produit->getetat();
+        $remise=$produit->getremise();
+        $photo=$produit->getphoto() ;
+
         
-		$datas = array( ':idi'=>$idi,':id'=>$id, ':nom'=>$nom , ':idsouscat'=>$idsouscat , ':idcat'=>$idcat ,':prix'=>$prix , ':qte'=>$qte , ':etat'=>$etat , ':remise'=>$remise);
-		$req->bindValue(':idi',$idi);
+		$datas = array( ':id'=>$id,':id'=>$id, ':nom'=>$nom , ':idsouscat'=>$idsouscat , ':idcat'=>$idcat ,':prix'=>$prix , ':qte'=>$qte , ':etat'=>$etat , ':remise'=>$remise , ':photo'=>$photo);
+		$req->bindValue(':id',$id);
 		$req->bindValue(':id',$id);
 		$req->bindValue(':nom',$nom);
 		$req->bindValue(':idsouscat',$idsouscat);
@@ -105,6 +243,8 @@ try{
 		$req->bindValue(':qte',$qte);
 		$req->bindValue(':etat',$etat);
 		$req->bindValue(':remise',$remise);
+				$req->bindValue(':photo',$photo);
+
 
 
 
