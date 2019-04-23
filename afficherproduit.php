@@ -17,7 +17,7 @@ $listeproduits=$produit1C->afficherproduit();
 <td>qte</td>
 <td>etat</td>
 <td>remise</td>
-
+<td>photo</td>
 <td>supprimer</td>
 <td>modifier</td>
 </tr>
@@ -34,6 +34,8 @@ foreach($listeproduits as $row){
 	<td><?PHP echo $row['qte']; ?></td>
 	<td><?PHP echo $row['etat']; ?></td>
 	<td><?PHP echo $row['remise']; ?></td>
+		<td><?PHP echo $row['photo']; ?></td>
+
 	
 	<td><form method="POST" action="supprimerproduit.php">
 	<input type="submit" name="supprimer" value="supprimer" onclick="verif3()">
