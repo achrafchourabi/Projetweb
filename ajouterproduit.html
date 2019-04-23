@@ -1,6 +1,6 @@
 <HTML>
 <head>
-	<script type="text/javascript" src="produit.js"></script>
+	<script type="text/javascript" src="ajouterproduit.js"></script>
 </head>
 <body>
 <form method="POST" action="ajoutprod.php">
@@ -8,36 +8,54 @@
 <caption>Ajouter Produit</caption>
 <tr>
 <td>idproduit</td>
-<td><input type="number" name="idcat"></td>
+<td><input type="number" name="<?php echo" min="0"></td>
 </tr>
 <tr>
 <td>Nomproduit</td>
-<td><input type="text" name="nomcat"></td>
+<td><input type="text" name="nom" id="nom"></td>
 </tr>
 
-<tr>
-<td>idsouscat</td>
-<td><input type="number" name="idsouscat"></td>
-</tr>
+
 <tr>
 <td>idcat</td>
-<td><input type="number" name="idcat"></td>
+<td>
+<select name="idcat" min="0">
+     	<option value="0" selected>Aucun</option>
+   		
+    	<option value="1" >salle de bain</option>
+    	<option value="2" >Maison et Jardin</option>
+    	<option value="3" >Cuisine</option>
+</td>
+</tr>
+<tr>
+<td>idsouscat</td>
+
+<td>
+    	<select name="idsouscat" min="0">
+     	<option value="0" selected>Aucun</option>
+   		
+    	<option value="1" >Accessoires de salle de bain</option>
+    	<option value="2" >Baignoires</option>
+    	<option value="3" >Robinetterie et Lavabo</option>
+    	<option value="4" >	Tuyaux et Echangeurs</option>
+
+</td>
 </tr>
 <tr>
 <td>prix</td>
-<td><input type="number" name="prix"></td>
+<td><input type="number" name="prix" min="0"></td>
 </tr>
 <tr>
 <td>Quantite</td>
-<td><input type="number" name="qte"></td>
+<td><input type="number" name="qte" min="0"></td>
 </tr>
 <tr>
 <td>Etat</td>
-<td><input type="number" name="etat"></td>
+<td><input type="number" name="etat" min="0" max="1"></td>
 </tr>
 <tr>
 <td>Remise</td>
-<td><input type="number" name="remise"></td>
+<td><input type="number" name="remise" min="0" max="100"></td>
 </tr>
 <tr>
 <td>photo</td>
@@ -45,7 +63,7 @@
 </tr>
 <tr>
 <td></td>
-<td><input type="submit" name="ajouter" value="ajouter" ></td>
+<td><input type="submit" name="ajouter" value="ajouter" onclick="verif()"></td>
 </tr>
 </table>
 </form>

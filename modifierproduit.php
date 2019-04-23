@@ -17,6 +17,8 @@ if (isset($_GET['id'])){
 		$qte=$row['qte'];
 		$etat=$row['etat'];
 		$remise=$row['remise'];
+				$photo=$row['photo'];
+
 		
 ?>
 <form method="POST">
@@ -24,35 +26,39 @@ if (isset($_GET['id'])){
 <caption>Modifier produit</caption>
 <tr>
 <td>id</td>
-<td><input type="number" name="idcat" value="<?PHP echo $idcat ?>"></td>
+<td><input type="number" name="id" min="0" value="<?PHP echo $id ?>"></td>
 </tr>
 <tr>
 <td>Nom</td>
-<td><input type="text" name="nomcat" value="<?PHP echo $nomcat ?>"></td>
+<td><input type="text" name="nom" value="<?PHP echo $nom ?>"></td>
 </tr>
 <tr>
 <td>idsouscat</td>
-<td><input type="number" name="idcat" value="<?PHP echo $idcat ?>"></td>
+<td><input type="number" name="idsouscat" min="0" value="<?PHP echo $idsouscat ?>"></td>
 </tr>
 <tr>
 <td>idcat</td>
-<td><input type="number" name="idcat" value="<?PHP echo $idcat ?>"></td>
+<td><input type="number" name="idcat" min="0" value="<?PHP echo $idcat ?>"></td>
 </tr>
 <tr>
 <td>prix</td>
-<td><input type="number" name="idcat" value="<?PHP echo $idcat ?>"></td>
+<td><input type="number" name="prix" min="0" value="<?PHP echo $prix ?>"></td>
 </tr>
 <tr>
 <td>qte</td>
-<td><input type="number" name="idcat" value="<?PHP echo $idcat ?>"></td>
+<td><input type="number" name="qte" min="0" value="<?PHP echo $qte ?>"></td>
 </tr>
 <tr>
 <td>etat</td>
-<td><input type="number" name="idcat" value="<?PHP echo $idcat ?>"></td>
+<td><input type="number" name="etat" min="0" max="1"> value="<?PHP echo $etat ?>"></td>
 </tr>
 <tr>
 <td>remise</td>
-<td><input type="number" name="idcat" value="<?PHP echo $idcat ?>"></td>
+<td><input type="number" name="remise" min="0" max="100"> value="<?PHP echo $remise ?>"></td>
+</tr>
+<tr>
+<td>photo</td>
+<td><input type="text" name="photo" > value="<?PHP echo $photo ?>"></td>
 </tr>
 
 
@@ -62,7 +68,7 @@ if (isset($_GET['id'])){
 </tr>
 <tr>
 <td></td>
-<td><input type="hidden" name="idcat_ini" value="<?PHP echo $_GET['id'];?>"></td>
+<td><input type="hidden" name="idi" value="<?PHP echo $_GET['id'];?>"></td>
 </tr>
 </table>
 </form>
@@ -70,9 +76,9 @@ if (isset($_GET['id'])){
 	}
 }
 if (isset($_POST['modifier'])){
-	$produit=new produit($_POST['id'],$_POST['nom'],$_POST['idsouscat'],$_POST['idcat'],$_POST['prix'],$_POST['qte'],$_POST['etat'],$_POST['remise']);
-	$produitC->modifierproduit($produit,$_POST['id_ini']);
-	echo $_POST['id_ini'];
+	$produit=new produit($_POST['id'],$_POST['nom'],$_POST['idsouscat'],$_POST['idcat'],$_POST['prix'],$_POST['qte'],$_POST['etat'],$_POST['remise'], $_POST['photo']);
+	$produitC->modifierproduit($produit,$_POST['idi']);
+	echo $_POST['idi'];
 	header('Location: index.php');
 }
 ?>

@@ -27,7 +27,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-            <a class="navbar-brand">Produits salle de bain</a>
+            <a class="navbar-brand">Produits Maison et jardin</a>
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
@@ -75,7 +75,7 @@
 <?PHP
 include "C:/wamp64/www/core/produitCore.php";
 $produit1C=new produitC ();
-$listeproduits=$produit1C->afficherproduitsalledebain();
+$listeproduits=$produit1C->afficherproduitmaisonetjardin();
 //var_dump($listeEmployes->fetchAll());
 ?>
 
@@ -119,10 +119,10 @@ foreach($listeproduits as $row){
 <?PHP
 }
 ?>
-        <tr> <h2><?php
+          <tr> <h2><?php
        $produit2C=new produitC ();
-        $produit2C->totalproduitsalledebain() ;  ?></h2></tr>
-        </div>  
+        $produit2C->totalproduitmaisonetjardin() ;  ?></h2></tr>
+        </div>
         </div>
 
         <!-- /.row -->
