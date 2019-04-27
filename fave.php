@@ -3,18 +3,29 @@ include "../entities/services.php";
 include "../core/serviceCore.php";
 include "../entities/Panier.php";
 include "../core/PanierCore.php";
+include "../entities/Favori.php";
+include "../core/FavoriCore.php";
 include "../../config.php";
-include "../entities/sms.php";
 
 
-$pan=new PanierCore();
-$listePanier=$pan->afficherPanier();
+
+
+  $pan=new PanierCore();
+$listePanier=$pan->recupererType();
+$affchage=$pan->recupererType();
 $cPanier = $pan->countPanier();
+$total=$pan->somme();
+
+  $pan1=new FavoriCore();
+$listePanier1=$pan1->recupererType();
+$affchage=$pan1->recupererType();
+
 
 $ClimR=new ServCore();
 $listeClima=$ClimR->afficherClim();
 
 ?>
+
 
 
 <!doctype html>
@@ -32,7 +43,12 @@ $listeClima=$ClimR->afficherClim();
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
 <base href="http://livedemo00.template-help.com/zencart_55417/">
 <link rel="canonical" href="http://livedemo00.template-help.com/zencart_55417/">-->
-
+<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!--external css-->
+  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href="lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+  <link href="lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+  <link rel="stylesheet" href="lib/advanced-datatable/css/DT_bootstrap.css" />
 
 <link rel="stylesheet" type="text/css" href="../css/stylesheet_bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="../css/stylesheet_bootstrap_theme.css" />
@@ -139,8 +155,9 @@ $listeClima=$ClimR->afficherClim();
                                       ?>  
                                         <table>
                                         <tr>
-                                            <td><div class="none"> <input type="hidden" name="ID_panier" value="<?PHP echo $row['ID_panier'];?>">  <?php echo "Produit" .$row['ID']; echo "| Quantité: ".$row['quantite']; ?></div> </td>
-                                                                     
+                                            <td><div class="none"> <input type="hidden" name="ID_panier" value="<?PHP echo $row['ID_panier'];?>">  <?php echo "Produit : " .$row['type']; echo "| Quantité: ".$row['quantite']; ?></div> </td>
+                                             
+
                                                                           
                                         </tr>
                                        
@@ -444,15 +461,16 @@ $listeClima=$ClimR->afficherClim();
                     </div>
               </div>
         </div>
-  </header>
-  
+	</header>
+	
+
+	   
 
 
 
 
-
-  <!-- ========== CATEGORIES TABS ========= -->
-      <!-- ==================================== -->
+	<!-- ========== CATEGORIES TABS ========= -->
+			<!-- ==================================== -->
                 
     
     <!-- ============================ -->
@@ -461,237 +479,66 @@ $listeClima=$ClimR->afficherClim();
           <div class="container">
       <div class="row">
         <div class="col-xs-12">
-                      <div id="navBreadCrumb" class="breadcrumb">  <a class="home" href="file:///C:/Users/Rania/Desktop/Nouveau%20dossier/Projet%20Web/home.html"></a>
-                        <br>
- <span>Service Climatisation</span>
+                      <div id="navBreadCrumb" class="breadcrumb">  <a class="home" href="http://livedemo00.template-help.com/zencart_55417/"></a>
+ <span> The Shopping Cart</span>
 </div>
                   </div>
       <div class="main-col 
-    
-     left_column      ">
+	  
+	   left_column      col-sm-12 ">
 
-     <div class="row">
+		 <div class="row">
 
         <div class="center_column col-xs-12
-        col-sm-12 ">
-          
-<div class="centerColumn" id="productGeneral">
-    <div class="wrapper bot-border"> 
-    <!--bof Prev/Next bottom position -->
-      </div>
-  <div class="tie">
-    <div class="tie-indent">
-      <div class="page-content"> 
-      <!--bof Form start--> 
+				col-sm-12 with_col ">
+          <div class="centerColumn" id="shoppingCartDefault">
+
+<div class="heading"><h1>Your Shopping Cart Contents</h1>
 
  
-        <!--eof Form start-->
-          
-                  
-        <!--bof Category Icon -->
-          
-                  
-        
-      <div class="row">
-        <div class="main-image col-xs-12 col-sm-6">
-          <div id="fb-root"></div>
-          <!--bof Main Product Image -->
-                     
+                
 
+                       <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                        <tr>
+                        <th>ID</th>
+                        <th>produit</th>
+                       
+                        <th>supprimer</th>
+                      </tr>
 
-<div id="productMainImage" class="pull-left image-block">
-  <span class="image"><a href="#">
-  <img src="../../images/clim.jpg" class="img-responsive" alt="entretien et réparation des chauffage et climatiseurs" title="entretien et réparation des chauffage et climatiseurs " width="200" height="200" />  <span class="zoom"></span></a></span>
-  
-</div>                      
-          <!--eof Main Product Image--> 
-          <!--bof Additional Product Images -->
-                              <ul id="productAdditionalImages">
-            
-    <li class="additionalImages centeredContent back" style="width:20%;">
-      <a href="#""><img src="../../images/clim2.png" class="img-responsive" alt="entretien et réparation des chauffage et climatiseurs" title="entretien et réparation des chauffage et climatiseurs " width="114" height="114" /></a></li>    <li class="additionalImages centeredContent back" style="width:20%;">
-      <a href="#"><img src="../../images/clim3.jpg" class="img-responsive" alt="entretien et réparation des chauffage et climatiseurs" title="entretien et réparation des chauffage et climatiseurs " width="114" height="114" /></a></li>    <li class="additionalImages centeredContent back" style="width:20%;">
-      <a href="#" ><img src="../../images/clim4.jpg"" class="img-responsive" alt="entretien et réparation des chauffage et climatiseurs" title="entretien et réparation des chauffage et climatiseurs " width="114" height="114" /></a></li>
+                       
+                           <?PHP
+                 
+                    foreach($affchage as $row){
+                      ?>
+                     <tr>
+                      <form method="POST" action="supprimerFavori.php">
+                      <input  type="hidden" value="<?PHP echo $row['ID_panier']; ?>" name="ID_panier">
+                      <td><?PHP echo $row['ID_panier']; ?></td>
+                      <td><?PHP echo $row['type']; ?></td>
+                                        
+                        
+                        <td><input type="submit" name="supprimer" class="btn btn-danger btn-xs" value="Supprimer"><i class="fa fa-trash-o"></i></td></form>
 
-    <li class="additionalImages centeredContent back" style="width:20%;">
-      <a href="#"><img src="../../images/clim5.jpg" class="img-responsive" alt="entretien et réparation des chauffage et climatiseurs" title="entretien et réparation des chauffage et climatiseurs " width="114" height="114" /></a></li>    <li class="additionalImages centeredContent back" style="width:20%;">
-     
- 
-          </ul>
-              <!--eof Additional Product Images -->
-          <div class="video_desc">
-            <div class="row">
-            <!--bof  -->
-                <div id="productYouTube" class="col-xs-12 col-sm-12">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/Hv-eUoVZaLo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-            <!--eof YouTube -->
-            <!--bof Product description -->
-                        <div id="productDescription" class="description biggerText col-sm-12 col-xs-12 col-sm-12 ">STMG vous présente toujours les précédentes services qu'elle a offert à ses chers clients.Notre objectif est votre satisfaction</div>
-                        <!--eof Product description --> 
-            </div>
-       </div>
-    </div>
-          <div class="pb-center-column col-xs-12 col-sm-6"> 
-            <!--bof free ship icon  -->
-                        <!--eof free ship icon  -->
-            <h2 class="title_product">Notre Service climatisation</h2>
-            <h3 class="sub_title">Description </h3>
-            <!--bof Product description -->
-                        <div id="shortDescription" class="description">N’attendez pas le temps chaud  ou le grand froid pour vous procurer un chauffage ou un climatiseur ! Laissez-vous guider par une équipe qualifiée, dès le choix de votre équipement jusqu’à son installation et même entretien. Découvrez notre qualitée de service.STMG, une équipe compétente met à votre service ses compétences et vous apporte des solutions efficaces et économiques. Nous étudions de près votre installation pour vous procurer des équipements conformes à votre intérieur. Le choix des appareils est maîtrisé..</div>
-                        <!--eof Product description -->
-            <!--bof Product details list  -->
-                  <ul class="instock">
-              <li><strong>disponibilitée</strong>de 8h à 18h</li>
- <li><strong>Technicien responsable: </strong>mohamed</li>
-            </ul>
-                        <!--eof Product details list  --> 
-            <div class="wrapper atrib"> <span class="quantity_label">mafhemthech</span>
-              <!--bof Reviews button and count-->
-                            <div id="productReviewLink" class="buttonRow left"><a class="btn-default-small" href="http://livedemo00.template-help.com/zencart_55417/index.php?main_page=product_reviews&amp;cPath=3&amp;products_id=11&amp;number_of_uploads=0"><span class="cssButton normal_button button  button_reviews" onmouseover="this.className='cssButtonHover normal_button button  button_reviews button_reviewsHover'" onmouseout="this.className='cssButton normal_button button  button_reviews'">&nbsp;Go to the Reviews Page&nbsp;</span></a></div>
-              <br class="clearBoth">
-              <p class="reviewCount">Current Reviews: 1</p>
-                            <!--eof Reviews button and count -->
-            </div>
-            <div class="wrapper atrib2"> 
-              <!--bof Attributes Module -->
-               <form  name="Formulaireclimatisation" method="POST" action="addClim.php" onsubmit="return verifForm(this)">
- 
-                                            <div id="productAttributes">
-
-             <input type="hidden" name="ID">
-
-                                             
-<div class="wrapperAttribsOptions">
-<h4 class="optionName back">Nom de votre Société</h4>
-<input type="text" name="nom" onblur="verifnom(this)">
-</div>
-<br>
-<div class="wrapperAttribsOptions">
-<h4 class="optionName back">Type de votre demande</h4>
-
-<select name="demande" class="form-control">
-      <option  value="37">Select from below ...</option>
-  <option name="demande" value="Installation">Installation</option>
-  <option name="demande" value="Panne">Panne</option>
-  <option name="demande" value="autre">autre</option>
-</select>
-
-</div>
-<br>
-
-<div class="wrapperAttribsOptions">
-<h4 class="optionName back"><label class="attribsSelect" for="attrib-2">Lieu</label></h4>
-
-<select name="lieu" id="attrib-2" class="form-control">
-  <option  value="37">Select from below ...</option>
-  <option name="lieu" value="Tunis">Grand Tunis</option>
-  <option name="lieu" value="autre">autre</option>
-
-</select>
-
-</div>
-<br>
-<div class="wrapperAttribsOptions">
-<h4 class="optionName back"><label class="attribsSelect" for="attrib-5">Secteur</label></h4>
-
-<select name="secteur" id="attrib-5" class="form-control">
-      <option  value="37">Select from below ...</option>
-  <option name="secteur" value="climatiseur">Climatiseur</option>
-  <option name="secteur" value="chauffage">Chauffage</option>
-  <option name="secteur" value="autre">autre</option>
-</select>
-<div>
-<h4 class="optionName back"> Plus de détails à propos votre demande:</h4>
-<textarea name="details"  value="details" row="4" cols="40" id="details" onblur="verifdet(this)">Details</textarea>
-<input type="hidden" name="type" value="Climatisation">
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-              
-            <div class="add_to_cart_block"> 
-              <!--bof Add to Cart Box -->
-                                <div id="button_product">
-                <input type="text" class="form-control" name="prix" value="522.40" readonly=""></input>
-                              
-            </div>                       
-            
-                                          <!--eof Add to Cart Box--> 
-            </div>
-            </div>
-              
-            <div id="button_product">
-                <div class="add_to_cart_row">
-                  <strong class="fleft text2">
-                    <input type="text" class="form-control" name="quantite" value="1" readonly="" />
-                   </strong><span class="buttonRow">
-                    <input type="submit" class="btn btn-success add-to-cart" value="add-to-cart">
-
-
-                    </span></div> 
-</form>
-<script type="text/javascript">
-    function surligne(champ, erreur)
-{
-   if(erreur)
-      champ.style.backgroundColor = "#fba";
-   else
-      champ.style.backgroundColor = "";
-}
-
-
-function verifnom(champ)
-{
-   if(champ.value.length < 2 || champ.value.length > 25)
-   {
-      surligne(champ, true);
-      return false;
-   }
-   else
-   {
-      surligne(champ, false);
-      return true;
-   }
-}
-
-function verifdet(champ)
-{
-   if(champ.value.length < 2 || champ.value.length > 25)
-   {
-      surligne(champ, true);
-      return false;
-   }
-   else
-   {
-      surligne(champ, false);
-      return true;
-   }
-}
-
-
-function verifForm(f)
-{
-   var pseudoOk = verifnom(f.nom);
-   var mailOk = verifdet(f.details);
-
-   
-   if(pseudoOk && mailOk)
-      return true;
-   else
-   {
-      alert("Veuillez remplir correctement tous les champs");
-      return false;
-   }
-}
-</script>
+                    
+                    <?PHP } ?>
+                    </tr>
+                    
+                  </table>
+                   <br> 
+                   <br>  
+                   <br>        
+                   <br>  
+                   <br>  
+                <br>  
+                <br>  
+                <br>  
+                <br>  
+                <br>  
+                <br>  
+                <br>  
+                <br>  
+                <br>  
+                <br>  
+                                     
 </html>
-
-
-
