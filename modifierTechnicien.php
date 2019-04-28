@@ -1,15 +1,15 @@
 <?PHP
 
-include "../../Services/core/serviceCore.php";
+include "../entities/technicien.php";
+include "../core/technicienCore.php";
 include "../../config.php";
-  $elec=new servCore();
-$listeElect=$elec->afficherElectricity();
-
+$technicienC=new technicienCore();
+$listeTechnicien=$technicienC->afficherTechniciens();
 
 
 
 ?>
-<!DOCTYPE html>
+     <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -358,84 +358,89 @@ $listeElect=$elec->afficherElectricity();
           <div class="col-lg-6 col-md-6 col-sm-12">
             <!--  BASIC PROGRESS BARS -->
            
-              <div class="adv-table">
-              <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
-                <thead>
-                  <tr>
-                  
-                    <th nom="ID" class="hidden-phone">ID</th>
-                    <th nom="nom" class="hidden-phone">Nom</th>
-                    <th nom="demande" class="hidden-phone">demande</th>
-                     <th nom="lieu" class="hidden-phone">lieu</th>
-                    <th nom="secteur" class="hidden-phone">secteur</th>
-                    <th nom="details" class="hidden-phone">details</th>
-             
+              
+          <?php
 
-                      <th class="center hidden-phone"><span class="badge bg-success">Etat</span></th>
-     <th class="center hidden-phone"><span class="badge bg-warning">Techniciens</span></th>
-                  </tr>
-               
-                  
-                 
-                   <?PHP
-                 
-                  
-                    foreach($listeElect as $row){
 
- 
-
-                      ?>
-                      <tr class="gradeX">
-                     <td  class="hidden-phone"><?PHP echo $row['ID']; ?></td>
-                      <td class="hidden-phone"><?PHP echo $row['nom']; ?></td>
-                    <td class="center hidden-phone" ><?PHP echo $row['demande']; ?></td>
-                      <td class="center hidden-phone" ><?PHP echo $row['lieu']; ?></td>
-                   
-                     <td class="center hidden-phone"><?PHP echo $row['details']; ?></td>
-                     <td>
-                     <form class="pull-right hidden-phone" method="POST" action="validerElect.php">
-                      <input type="hidden" name="ID" value="<?php echo$row['ID'] ?>">
-                    <select class="badge bg-success" name="etat">
-                      <option name="etat" class="badge bg-success" value="debut d'entretien">début d'entretien</option>
-                      <option name="etat" class="badge bg-warning" value="Fin d'entretien">Fin d'entretien</option>
-                      <option name="etat" class="badge bg-success" value="appreciation">appréciation</option>
-                    
-                    </select></td>
-
-<td>         <select class="badge bg-warning" name="nomTech"> <?PHP
-$sql="Select * from technicien ";
-$db = config::getConnexion();
-$result=$db->query($sql);
-
-  foreach ($result as $ligne) {
+  if (isset($_GET['cin'])){
+  $techC=new technicienCore();
+    $techM=$techC->recupererTechnicien($_GET['cin']);
+  foreach($techM as $row){
+    $cin=$row['cin'];
+    $nom=$row['nom'];
+    $prenom=$row['prenom'];
+    $date=$row['date'];
+   
+    $lieu=$row['lieu'];
+        $specialite=$row['specialite'];
+            $salaire=$row['salaire'];
     
-  ?>
-                 
+    
+
+?>
+<form method="POST" >
+<table class="wrapper">
+<caption> <h3 h6 align="center" style ="color:black">Modifier Technicien</caption></h3>
+<tr>
+<th nom="cin" class="hidden-phone">cin</th>
+                    <th name="nom" class="hidden-phone">Nom</th>
+                    <th name="prenom" class="hidden-phone">Prenom</th>
+                     <th name="date" class="hidden-phone">date</th>
+                    <th name="lieu" class="hidden-phone">lieu</th>
+                    <th name="specialite" class="hidden-phone">specialite</th>
+                    <th name="salaire" class="hidden-phone">salaire</th>
+           
+<tr>
+<td class="hidden-phone"><input type="number" name="cin" value="<?PHP echo $cin ?>"></td>
+                      <td class="hidden-phone"><input type="text" name="nom" value="<?PHP echo $nom?>"></td>
+                    <td class="center hidden-phone" ><input type="text" name="prenom" value="<?PHP echo $prenom ?>"></td>
+                      <td class="center hidden-phone" ><input type="date" name="date" value="<?PHP echo $date ?>"></td>
+                    <td class="center hidden-phone"><input type="text" name="lieu" value="<?PHP echo $lieu?>"></td>
+                     <td class="center hidden-phone"><input type="text" name="specialite" value="<?PHP echo $specialite?>"></td>
+                      <td class="center hidden-phone"><input type="text" name="salaire" value="<?PHP echo $salaire?>"></td>
                   
+ </tr>                    
+<tr>
+
+<tr>
+
+<td></td>
+<td><input type="submit" name="modifier" value="modifier" href="afficherTechnicien.php"></td>
+</tr>
+<tr>
+
+<td><input type="hidden" name="cin" value="<?PHP echo $_GET['cin'];?>"></input></td>
+</tr>
+</table>
+
+</form>
+<?PHP
+  }
+}
+if (isset($_POST['modifier'])){
+  $techa=new Technicien($_POST['cin'],$_POST['nom'],$_POST['prenom'],$_POST['date'],$_POST['lieu'],$_POST['specialite'],$_POST['salaire']);
+  $technicienC->modifierTechnicien($techa,$_POST['cin']);
+  echo $_POST['cin'];
+
+
+}
+
+   ?>
      
-   <option  name="nomTech" value="<?PHP echo $ligne['cin']; ?>"><?PHP echo $ligne['nom'].'-'.$ligne['prenom']; ?> 
-  </option>
-  <?PHP }  ?>
+                  
+                 
+                          
+                         
 
-</select>  </td>
-
-<td><button class="btn btn-success btn-xs"><i class=" fa fa-check"></i></button>  </td></form>
-                        <td> <form class="pull-right hidden-phone" method="POST" action="supprimerElect.php">
-                     
-                          <button class="btn btn-danger btn-xs" type="submit" name="supprimer" value="supprimer"><i class="fa fa-trash-o "></i></button>
-  <input  type="hidden" value="<?PHP echo $row['ID']; ?>" name="ID">   </form>
-   <td> 
-                     
-  <button><a   class="btn btn-primary btn-xs" href="modifierServ.php?ID=<?PHP echo $row['ID']; ?>"><i class="fa fa-pencil"></i></a>
-  </button>
- <?php } ?>
 </form>
  
-                     </tr>
+                     
                       </thead>
                 <tbody>
                     </li>
 
+
+               
     
            
         
@@ -445,7 +450,8 @@ $result=$db->query($sql);
       <!-- /wrapper -->
     </section>
    
-  <script src="../lib/jquery/jquery.min.js"></script>
+  <!-- js placed at the end of the document so the pages load faster -->
+    <script src="../lib/jquery/jquery.min.js"></script>
 
   <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
   <script class="include" type="text/javascript" src="../lib/jquery.dcjqaccordion.2.7.js"></script>

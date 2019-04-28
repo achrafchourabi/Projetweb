@@ -4,13 +4,26 @@ include "../core/serviceCore.php";
 include "../entities/Panier.php";
 include "../core/PanierCore.php";
 include "../../config.php";
-$pan=new PanierCore();
+include "../entities/servAdmin.php";
+include "../core/servAdminCore.php";
+include "../entities/evaluation.php";
+include "../core/evaluationC.php";
+
+
+$serv=new servAdminCore();
+$listeServ=$serv->afficherSuivie();
+
+  $pan=new PanierCore();
 $listePanier=$pan->afficherPanier();
+$affchage=$pan->afficherPanier();
 $cPanier = $pan->countPanier();
+$total=$pan->somme();
 
 $ClimR=new ServCore();
-$listeClima=$ClimR->afficherPeinture();
+$listeClima=$ClimR->afficherClim();
+
 ?>
+
 
 
 <!doctype html>
@@ -538,201 +551,124 @@ jQuery(window).load(function() {
 </script>
 
 
-    </div>                    <!-- end edit for ZX Slideshow --> 
-        
+    </div> 
+               
+
         <section class="ie9_all">
-           
-      <div class="container">
+          <div class="container">
+     <div class="container">
       <div class="row">
         <div class="col-xs-12">
+                      <div class="col-xs-12">
                     
                         <br>
                         <br>
                         <br>
                         <br>
                           <div id="navBreadCrumb" class="breadcrumb">  <a class="home" href="../../index.php"></a>
- <span>Service Peinture</span>
+ <span> Suivie de votre Service</span>
 </div>
                   </div>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
       <div class="main-col 
-    
-     left_column      ">
+      
+       left_column      col-sm-12 ">
 
-     <div class="row">
+         <div class="row">
 
         <div class="center_column col-xs-12
-        col-sm-12 ">
-          
-<div class="centerColumn" id="productGeneral">
-    <div class="wrapper bot-border"> 
-    <!--bof Prev/Next bottom position -->
-      </div>
-  <div class="tie">
-    <div class="tie-indent">
-      <div class="page-content"> 
-      <!--bof Form start--> 
+                col-sm-12 with_col ">
+          <div class="centerColumn" id="shoppingCartDefault">
+
+<div class="heading"><h1>Tableau de Suivie</h1>
+<form name="ID" method="POST" onsubmit="verifForm(this)">
+ 
+    <input type="text" name="IDs" onblur="verifdet(this)">
+    <input type="submit" name="code" value="valider">
 
  
-        <!--eof Form start-->
-          
-                  
-        <!--bof Category Icon -->
-          
-                  
-        
-      <div class="row">
-        <div class="main-image col-xs-12 col-sm-6">
-          <div id="fb-root"></div>
-          <!--bof Main Product Image -->
-                     
+
+<?PHP
 
 
-<div id="productMainImage" class="pull-left image-block">
-  <span class="image"><a href="#">
-  <img src="../../images/peint.jpg" class="img-responsive" " />  
-  
-</div>                      
-          <!--eof Main Product Image--> 
-          <!--bof Additional Product Images -->
-                              <ul id="productAdditionalImages">
-            
-  
+if (isset($_POST['IDs']))
+{
+$aff=new servAdminCore();
+$listaa=$aff->recupererServ($_POST['IDs']); 
 
-   
+
+ ?>
+
  
-          </ul>
-              <!--eof Additional Product Images -->
-         
 
-   <div class="video_desc">
-            <div class="row">
-            <!--bof  -->
+
+                       <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+                        <tr>
+                        <th>ID</th>
+                        <th>nom Technicien</th>
+                        <th>etat</th>
+                       
+                      </tr>
+
+                      <form method="POST" >
+
+                           <?PHP
+                 
+                    foreach($listaa as $row){
+                      ?>
+                     <tr>
+                    
+                      <input  type="hidden" name="ID" value="<?PHP echo $row['ID']; ?>">
+                      <td><?PHP echo $row['ID']; ?></td>
+                      <td><?PHP echo $row['nomTech']; ?></td>
+                      <td><?PHP echo $row['etat']; ?></td>
+                       </tr>
+                      </table> 
+               <?PHP } ?> 
+               </form>      
+<form method="POST" >
+ <input type="submit" name="note" value="5">
+ 
+                         
+  </form>
+              <?php $evaluation1=new Evaluation($row['ID'],$_POST['note']);
+
+                    
+$evaluation1C=new evaluationC();
+$evaluation1C->ajouterEvaluation($evaluation1); ?>     
                
-            <!--eof YouTube -->
-            <!--bof Product description -->
-                        <div id="productDescription" class="description biggerText col-sm-12 col-xs-12 col-sm-12 ">STMG vous présente toujours les précédentes services qu'elle a offert à ses chers clients.Notre objectif est votre satisfaction</div>
-                        <!--eof Product description --> 
-            </div>
-       </div>
-    </div>
-          <div class="pb-center-column col-xs-12 col-sm-6"> 
-            <!--bof free ship icon  -->
-                        <!--eof free ship icon  -->
-            <h2 class="title_product">Notre service Peinture</h2>
-           
-            <!--bof Product description -->
-                        <div id="shortDescription" class="description">En tant qu’entreprise, faites appel à STMG pour tous vos besoins de peinture en bâtiment.
-Nos équipes interviennent dans tous types de locaux :
 
-Bureaux
-Halls
-Hangars
-Show-rooms
-Etc…
-Un projet de réaménagement ? STMGs’occupe de votre salle de réunion, de vos archives et couloirs. En extérieur, nous prenons en charge le rafraichissement de votre façade, portail ou encore balustrade.
+                   
 
-Une idée de décoration ? Anthracite, turquoise, chocolat… Laissez libre cours à vos envies ! Selon votre projet, nos équipes vous conseillent vers les couleurs les plus adaptées à votre entreprise et surtout, à l’image que vous souhaitez véhiculer.
+                 
 
-En intérieur comme en extérieur, vous décidez et nous réalisons tout ce que vous voulez, en vous assurant une prestation de qualité !</div>
-                        <!--eof Product description -->
-            <!--bof Product details list  -->
-                  <ul class="instock">
-              <li><strong>Horaire du travail </strong>de 8h à 18h</li>
-
-            </ul>
-                        <!--eof Product details list  --> 
-           
-              <!--bof Reviews button and count-->
-                            <div id="productReviewLink" class="buttonRow left"><a class="btn-default-small" href="http://livedemo00.template-help.com/zencart_55417/index.php?main_page=product_reviews&amp;cPath=3&amp;products_id=12&amp;number_of_uploads=0"><span class="cssButton normal_button button  button_reviews" onmouseover="this.className='cssButtonHover normal_button button  button_reviews button_reviewsHover'" onmouseout="this.className='cssButton normal_button button  button_reviews'">&nbsp;Go to the Reviews Page&nbsp;</span></a></div>
-              <br class="clearBoth">
-              <p class="reviewCount">Current Reviews: 1</p>
-                            <!--eof Reviews button and count -->
-            </div>
-            <div class="wrapper atrib2"> 
-              <!--bof Attributes Module -->
-                
-                                            <div id="productAttributes">
-
-<form  name="FormulairePeinture" method="POST" action="addPeint.php" onsubmit="return verifForm(this)" >
-        <form action="upload.php" method="post" enctype="multipart/form-data">
-
-
-
-<div class="wrapperAttribsOptions">
-<h4 class="optionName back">Nom de votre Société</h4>
-<input type="text" name="nom" onblur="verifdet(this)>
-
-</div>
-
-
-<div class="wrapperAttribsOptions">
-<h4 class="optionName back"><label class="attribsSelect" for="attrib-2">Lieu</label></h4>
-
-<select name="lieu" class="form-control">
-  <option value="37">Select from below ...</option>
-  <option name="lieu" value="Tunis">Grand Tunis</option>
-  <option name="lieu" value="autre">autre</option>
-</select>
-
-</div>
-
-
-<div class="wrapperAttribsOptions">
-<h4 class="optionName back">Type de votre demande</h4>
-<select name="demande" class="form-control">
-      <option  value="37">Select from below ...</option>
-  <option name="demande" value="Installation">Installation</option>
-  <option name="demande" value="Panne">Panne</option>
-  <option name="demande" value="autre">autre</option>
-</select>
-
-</div>
-<div  class="wrapperAttribsOptions">
-<h4 class="optionName back" Plus de détails à propos votre demande:></h4>
- Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    
-
-<textarea name="details"  row="4" cols="40"  onblur="verifdet(this)" ></textarea>
-
-<input type="hidden" name="secteur" value="Peinture">
-<input type="hidden" name="type" value="peinture">
-
-
-
-</div>                                   
-
-</div>                                          <!--eof Attributes Module --> 
+                   
+                    
+               
+                   
+                  
+ 
+  
+                    
               
-           
-            
-             <div class="add_to_cart_block"> 
-              <!--bof Add to Cart Box -->
-                                <div id="button_product">
-                <input type="text" class="form-control" name="prix" value="122.40" readonly=""></input>
-                              
-            </div>                       
-            
-                                          <!--eof Add to Cart Box--> 
-            </div>
-            </div>
-              
-            <div id="button_product">
-                <div class="add_to_cart_row">
-                  <strong class="fleft text2">
-                    <input type="text" class="form-control" name="quantite" value="1" readonly="" />
-                   </strong><span class="buttonRow">
-                    <input type="submit" class="btn btn-success add-to-cart" value="add-to-cart">
+  
 
+                      <?PHP } ?>
+                      <br>
+                      <br>
+                      <br>
 
+                </form>
 
-                    </span></div>  </div>
-</form></form>
-        
-    
-  </section>
-<!-- ========== FOOTER ========== -->
-  <footer>
+          </section>
+
+<footer>
     <div class="footer-container">
         
 
@@ -840,7 +776,9 @@ Ben Arous</p>
 
 function verifnom(champ)
 {
-   if(champ.value.length < 5 || champ.value.length > 25)
+    var age = parseInt(champ.value);
+   if(isNaN(age) || age < 5
+   0 || age > 100)
    {
       surligne(champ, true);
       return false;
@@ -869,11 +807,11 @@ function verifdet(champ)
 
 function verifForm(f)
 {
-   var pseudoOk = verifnom(f.nom);
-   var mailOk = verifdet(f.details);
+   var pseudoOk = verifnom(f.ID);
+ 
 
    
-   if(pseudoOk && mailOk)
+   if(pseudoOk)
       return true;
    else
    {
@@ -923,11 +861,11 @@ function verifdet(champ)
 
 function verifForm(f)
 {
-   var pseudoOk = verifnom(f.nom);
-   var mailOk = verifdet(f.details);
+   var pseudoOk = verifnom(f.IDs);
+  
 
    
-   if(pseudoOk && mailOk)
+   if(pseudoOk )
       return true;
    else
    {
@@ -936,4 +874,6 @@ function verifForm(f)
    }
 }
 </script>
+                          
+                                     
 </html>
