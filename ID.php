@@ -6,8 +6,6 @@ include "../core/PanierCore.php";
 include "../../config.php";
 include "../entities/servAdmin.php";
 include "../core/servAdminCore.php";
-include "../entities/evaluation.php";
-include "../core/evaluationC.php";
 
 
 $serv=new servAdminCore();
@@ -553,7 +551,7 @@ jQuery(window).load(function() {
 
     </div> 
                
-
+  <section id="main-content">
         <section class="ie9_all">
           <div class="container">
      <div class="container">
@@ -587,9 +585,9 @@ jQuery(window).load(function() {
           <div class="centerColumn" id="shoppingCartDefault">
 
 <div class="heading"><h1>Tableau de Suivie</h1>
-<form name="ID" method="POST" onsubmit="verifForm(this)">
+<form name="ID" method="POST"  onsubmit="return verifForm(this)">
  
-    <input type="text" name="IDs" onblur="verifdet(this)">
+    <input type="text" name="IDs" onblur="verifnom(this)">
     <input type="submit" name="code" value="valider">
 
  
@@ -631,21 +629,16 @@ $listaa=$aff->recupererServ($_POST['IDs']);
                        </tr>
                       </table> 
                <?PHP } ?> 
-               </form>      
-<form method="POST" >
- <input type="submit" name="note" value="5">
+                 
+
+       <?PHP } ?>
+   
  
                          
-  </form>
-              <?php $evaluation1=new Evaluation($row['ID'],$_POST['note']);
+ 
 
-                    
-$evaluation1C=new evaluationC();
-$evaluation1C->ajouterEvaluation($evaluation1); ?>     
-               
-
-                   
-
+        </form>    
+  </form>  
                  
 
                    
@@ -659,12 +652,13 @@ $evaluation1C->ajouterEvaluation($evaluation1); ?>
               
   
 
-                      <?PHP } ?>
+                     
                       <br>
                       <br>
                       <br>
 
-                </form>
+             </div>   
+         </div>  </div>  </div>  </div> 
 
           </section>
 
@@ -734,21 +728,13 @@ Ben Arous</p>
         </div>
       </div>
     </div>
+
   </footer>
 <!-- ============================ --> 
-</div>
+
 <!-- ========================================= -->
 
-<script type="text/javascript">
- var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-7078796-5']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();</script>
-</body><!-- Google Tag Manager --><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-P9FT69"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P9FT69');</script>
+
   
 
 
@@ -763,7 +749,8 @@ Ben Arous</p>
 
         
 
-</body>
+
+
 <script type="text/javascript">
     function surligne(champ, erreur)
 {
@@ -776,77 +763,7 @@ Ben Arous</p>
 
 function verifnom(champ)
 {
-    var age = parseInt(champ.value);
-   if(isNaN(age) || age < 5
-   0 || age > 100)
-   {
-      surligne(champ, true);
-      return false;
-   }
-   else
-   {
-      surligne(champ, false);
-      return true;
-   }
-}
-
-function verifdet(champ)
-{
-   if(champ.value.length < 5 || champ.value.length > 50)
-   {
-      surligne(champ, true);
-      return false;
-   }
-   else
-   {
-      surligne(champ, false);
-      return true;
-   }
-}
-
-
-function verifForm(f)
-{
-   var pseudoOk = verifnom(f.ID);
- 
-
-   
-   if(pseudoOk)
-      return true;
-   else
-   {
-      alert("Veuillez remplir correctement tous les champs");
-      return false;
-   }
-}
-</script>
-<script type="text/javascript">
-    function surligne(champ, erreur)
-{
-   if(erreur)
-      champ.style.backgroundColor = "#fba";
-   else
-      champ.style.backgroundColor = "";
-}
-
-
-function verifnom(champ)
-{
-   if(champ.value.length < 5 || champ.value.length > 25)
-   {
-      surligne(champ, true);
-      return false;
-   }
-   else
-   {
-      surligne(champ, false);
-      return true;
-   }
-}
-
-function verifdet(champ)
-{
-   if(champ.value.length < 5 || champ.value.length > 50)
+   if(champ.value.length < 1 || champ.value.length > 50000)
    {
       surligne(champ, true);
       return false;
@@ -875,5 +792,5 @@ function verifForm(f)
 }
 </script>
                           
-                                     
+     </body>                                
 </html>
