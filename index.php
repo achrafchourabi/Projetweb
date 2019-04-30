@@ -4,6 +4,7 @@
 <head>
 
   <meta charset="utf-8" >
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -107,52 +108,52 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/01.png" alt="First slide">
+              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/01.png" alt="First slide" style="width:900px ; height:350px ;">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/02-3.png" alt="Second slide">
+              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/02-3.png" alt="Second slide" style="width:900px ; height:350px ;">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/03.png" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/03.png" alt="Third slide" style="width:900px ; height:350px ;">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/04.png" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/04.png" alt="Third slide" style="width:900px ; height:350px ;">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/baignoire-mini.jpg" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/baignoire-mini.jpg" alt="Third slide" style="width:900px ; height:350px ;">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/baignoire1.jpg" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/baignoire1.jpg" alt="Third slide" style="width:900px ; height:350px ;">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/baignoire-mini-NB.jpg" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/baignoire-mini-NB.jpg" alt="Third slide" style="width:900px ; height:350px;" >
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/lavabo1.jpg" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/lavabo1.jpg" alt="Third slide" style="width:900px ; height:350px ;">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/11.png" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/11.png" alt="Third slide" style="width:900px ; height:350px ;">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/12.png" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/12.png" alt="Third slide" style="width:900px ; height:350px" ;>
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/tuyau1.jpg" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/tuyau1.jpg" alt="Third slide" style="width:900px ; height:350px ;">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/tuyau2.jpg" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/tuyau2.jpg" alt="Third slide" style="width:900px ; height:350px ;">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/17.png" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/17.png" alt="Third slide" style="width:900px ; height:350px ;">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/18.png" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/18.png" alt="Third slide" style="width:900px ; height:350px ;">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/19.png" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/19.png" alt="Third slide" style="width:900px ; height:350px ;">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/20.png" alt="Third slide">
+              <img class="d-block img-fluid" src="http://localhost/views/theme002/images/20.png" alt="Third slide" style="width:900px ; height:350px ;">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -231,6 +232,7 @@ foreach($listeproduits as $row){
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Votre site web 2019</p>
     </div>
+    <div style="color: white;position: absolute;left: 200px;top: 4645px;"><a href="categorie.php"><h5>Gestion des catégories</h5></a></div>
     <!-- /.container -->
   </footer>
 

@@ -17,7 +17,55 @@
   <link href="css/shop-homepage.css" rel="stylesheet">
 
 </head>
+<body>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="http://localhost/viewsback/">Session Administrateur</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <a class="navbar-brand">Tous vos produits</a>
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="http://localhost/viewsback/">Accueil
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-3">
+
+       <h1 class="my-4"> <a  href="http://localhost/viewsback/" >Catégories</a></h1>
+        <div class="list-group">
+          <a href="salledebain.php" class="list-group-item">Categorie salle de bain</a>
+          <a href="maisonetjardin.php" class="list-group-item">Categorie Maison et Jardin</a>
+          <a href="cuisine.php" class="list-group-item">Categorie Cuisine</a>
+          <br>
+          <br>
+          <form method="POST" action="ajouterproduit.html">
+         <input type="submit" name="ajouter" value="Ajouter un produit">
+       </form> 
+       <br>
+       <form method="GET" action="search.php">
+       <input type="search" name="rechercher" placeholder="Rechercher un produit">
+                <input type="submit" name="rechercherproduit" value="Rechercher un produit" title ="Rechercher un produit par son nom">
+ <br>
+      <br>
+        </div>
+
+      </div>
+      <br>
+      <br>
 
                 <?php
                 include "C:/wamp64/www/core/produitCore.php";
@@ -55,6 +103,22 @@ foreach($liste as $row){
 </div>
 <?php } ?>
 </div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+
+ <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Votre site web 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
 
 </html>
 
