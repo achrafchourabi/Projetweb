@@ -665,7 +665,7 @@ ou par fax au 01 46 49 10 81 </p>
         <div id="productReviewsDefaultListingTopLinks" class="navSplitPagesLinks"> &nbsp;</div>
         
                 
-        <div class="buttonRow forward"><a class="btn-default" ><span class="cssButton normal_button button  button_read_reviews" onmouseover="this.className='cssButtonHover normal_button button  button_read_reviews button_read_reviewsHover'" onmouseout="this.className='cssButton normal_button button  button_read_reviews'">&nbsp;Lire l'évaluation&nbsp;</span></a></div>
+        <div class="buttonRow forward"><a class="btn-default" ><span class="cssButton normal_button button  button_read_reviews" onmouseover="this.className='cssButtonHover normal_button button  button_read_reviews button_read_reviewsHover'" onmouseout="this.className='cssButton normal_button button  button_read_reviews'"></span></a></div>
         
         <div class="productReviewsDefaultReviewer bold">Date Added: 20/03/2019&nbsp;Par Achraf Chourabi</div>
         
@@ -674,12 +674,46 @@ ou par fax au 01 46 49 10 81 </p>
         <div class="productReviewsDefaultProductMainContent content">Très bon produit , fragile mais desgin très intéressant et ergonomie agréable.</div>
 
                         <hr />
+                        <!-- début boucle for  -->
+
+
+
+<?PHP
+include "C:/wamp64/www/core/commentaireCore.php";
+$commentaireC=new comC ();
+$listeproduits=$commentaireC->affichercom();
+//var_dump($listeEmployes->fetchAll());
+?>
+<?PHP
+foreach($listeproduits as $row){
+  ?>
+
+<div class="rating"><img src="includes/templates/theme002/images/stars_5.gif"  alt="" /></div>
+        
+        <div class="productReviewsDefaultProductMainContent content"><?PHP echo $row['texte']; ?></div>
+
+<hr />
+
+<?PHP
+}
+?>
+
+
+
+
+
+
+
+                          <!-- fin boucle for  -->
+
+
         <div id="productReviewsDefaultListingBottomNumber" class="navSplitPagesResult"></div>
         <div id="productReviewsDefaultListingBottomLinks" class="navSplitPagesLinks"> &nbsp;</div>
         
                 <br />
+                <form method="POST" action="http://localhost/views/ajoutcom.php" >
             <div class="btn-group">
-                <a class="btn-default-small" href="http://localhost/views/produit1.php"><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Détails&nbsp;</span></a>                <a class="btn-default-small" href="http://localhost/views/produit1.php"><span class="cssButton normal_button button  button_write_review" onmouseover="this.className='cssButtonHover normal_button button  button_write_review button_write_reviewHover'" onmouseout="this.className='cssButton normal_button button  button_write_review'">&nbsp;Soummetre une évaluation&nbsp;</span></a>                    <br />            </div>
+                <a class="btn-default-small" href="http://localhost/views/produit1.php"><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Détails&nbsp;</span></a>  <br> <br> <textarea name="texte" placeholder="Entrez votre commentaire ici ..."></textarea>            <a class="btn-default-small" href="http://localhost/views/produit1.php"><span class="cssButton normal_button button  button_write_review" onmouseover="this.className='cssButtonHover normal_button button  button_write_review button_write_reviewHover'" onmouseout="this.className='cssButton normal_button button  button_write_review'"><input type="submit" name="ajouter" value="Soummetre une évaluation"></span></a>                    <br />            </div> </form>
         
     </div>
 </div>

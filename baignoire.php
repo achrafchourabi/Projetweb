@@ -297,31 +297,52 @@ zcJS.timer = function (options) {
                                     <span>Pour tout achat supérieur à 99 dt</span>
                                     <span>Offre valable sur tout le site</span>
                                 </div>
+                                <?php
+                            include "C:/wamp64/www/Services/entities/Panier.php";
+include "C:/wamp64/www/Services/core/PanierCore.php";
+include "C:/wamp64/www/entities/produit.php";
+
+
+                            $pan=new PanierCore();
+$listePanier=$pan->afficherPanier();
+
+
+
+
+?>
                             </div>
                             <div class="shopping_cart" id="shopping_cart">
                                 <!-- ========== SHOPPING CART ========== -->
                                                                 <div class="shop-box-wrap">
                                     <span class="cart_title" >Panier</span><span class="st3">  Produits</span>                                </div>
                                 <div class="shopping_cart_content" id="shopping_cart_content" >
-                                    <ul class="cart-down"><li class="cart_item">
-            <a class="cart-img" href="http://livedemo00.template-help.com/zencart_55417/index.php?main_page=product_info&amp;products_id=6"><img src="images/06.png" alt=""></a>
-            <div class="center-info">
-              <a class="cart-name" href="http://livedemo00.template-help.com/zencart_55417/index.php?main_page=product_info&amp;products_id=6">Plumb Pak 12-in Brass Push Fit In-Line Straight Valve</a>
-              <div class="prod-info">
-                <span class="model">Model6</span>
-                <span class="quantity">2 <em class="spr">x</em> </span><span class="cart-price">$83.00</span>
-              </div>
-            </div><a class="delete" href="http://livedemo00.template-help.com/zencart_55417/index.php?main_page=index&amp;action=remove_product&amp;product_id=6"> </a></li><li class="cart_item">
-            <a class="cart-img" href="http://livedemo00.template-help.com/zencart_55417/index.php?main_page=product_info&amp;products_id=12:8731678392cb38b7f2e66b9fcebe5b49"><img src="images/12.png" alt=""></a>
-            <div class="center-info">
-              <a class="cart-name" href="http://livedemo00.template-help.com/zencart_55417/index.php?main_page=product_info&amp;products_id=12:8731678392cb38b7f2e66b9fcebe5b49">Vigo Tempered Glass Bathroom Sink - VG07505</a>
-              <div class="prod-info">
-                <span class="model">Model3</span>
-                <span class="quantity">1 <em class="spr">x</em> </span><span class="cart-price">$105.40</span>
-              </div>
-            </div><a class="delete" href="http://livedemo00.template-help.com/zencart_55417/index.php?main_page=index&amp;action=remove_product&amp;product_id=12:8731678392cb38b7f2e66b9fcebe5b49"> </a></li><li><div class="cart-price-total"><strong>Total:</strong>&nbsp;<span>$271.40</span></div></li><li><div class="cart-bottom">
-  <a class="btn btn-success" href="http://localhost/views/panier.php "><span class="cssButton">Panier</span></a>
-  <a class="btn btn-success1" href="http://livedemo00.template-help.com/zencart_55417/index.php?main_page=checkout_shipping"><span class="cssButton normal_button button  button_checkout" onmouseover="this.className='cssButtonHover normal_button button  button_checkout button_checkoutHover'" onmouseout="this.className='cssButton normal_button button  button_checkout'">&nbsp;Payer&nbsp;</span></a></div></li></ul>                                </div> 
+                                  <form method="POST" action="supprimerPanier.php">
+
+                                    <div class="center_info">
+                                        
+                                    <?PHP
+                                    
+
+                                    foreach($listePanier as $row){
+                                      ?>  
+                                        <table>
+                                        <tr>
+                                            <td><div class="none"> <input type="hidden" name="ID_panier" value="<?PHP echo $row['ID_panier'];?>">  <?php echo "Produit" .$row['ID']; echo "| Quantité: ".$row['quantite']; ?></div> </td>
+                                                                     
+                                                                          
+                                        </tr>
+                                       
+                                    <?php } ?>
+                                    <td></td><td><a href="http://localhost/views/cart.php">modifier</a></td> 
+                                     </table>
+                                    
+                                </div>
+                                    </form>
+
+
+
+
+                                           </div> 
                             </div>
                             <!-- =================================== -->  
                              <div id="search_block" class="clearfix">
@@ -715,9 +736,14 @@ ou par fax au 01 46 49 10 81 </p>
 
 
 <div id="productListing">
-
+<?php include "C:/wamp64/www/core/produitCore.php";
+?>
 <div class="top-pg">
-<div id="productsListingTopNumber" class="navSplitPagesResult fleft">Affichage <strong>1</strong> à <strong>3</strong> (à <strong>3</strong> produits)</div>
+<div id="productsListingTopNumber" class="navSplitPagesResult fleft">Affichage <strong>1</strong> à <strong><?php
+       $produit2C=new produitC ();
+        $produit2C->totalbaignoire() ;  ?></strong> (à <strong><?php
+       $produit2C=new produitC ();
+        $produit2C->totalbaignoire() ;  ?></strong> produits)</div>
 <div class="top-paginator">
     <ul id="productsListingListingTopLinks" class="pagination"> &nbsp;</ul>
     <ul class="listing_view hidden-xs">
@@ -730,6 +756,7 @@ ou par fax au 01 46 49 10 81 </p>
     </ul>
 </div>
 </div>
+
 <div class="clearfix"></div>
 
 <div class="tie tie-margin1">
@@ -738,14 +765,28 @@ ou par fax au 01 46 49 10 81 </p>
         
     
     <ul class="product_list row list">
-        <li class="col-xs-12">
+       
+        <?PHP
+
+$produit1C=new produitC ();
+$listeproduits=$produit1C->afficherbaignoire();
+//var_dump($listeEmployes->fetchAll());
+?>    
+<?PHP
+foreach($listeproduits as $row){
+  ?>
+  <form  name="ajouterproduitpanier" method="POST" action="http://localhost/views/addproduit.php" />
+       <li class="col-xs-12">
         <div class="product-container">
             <div class="row">
                                                 <div class="img">
-                                        <a ><img src="http://localhost/views/baignoire-mini.jpg" class="img-responsive" alt="Oatey 316-in x 5-ft Rubber Utility Hose" title=" Baignoire-mini forme ronde céramique " width="200" height="200" class="listingProductImage" /></a>                                </div>
+                                        <a ><img src="<?php echo $row['photo']; ?>" class="img-responsive" alt="Oatey 316-in x 5-ft Rubber Utility Hose" title=" Baignoire-mini forme ronde céramique " width="200" height="200" class="listingProductImage" /></a>                                </div>
                                                                 <div class="center-block col-xs-4 col-xs-7 col-md-4">
                                     <h5 itemprop="name">
-                        <a class="product-name name" >Baignoire-mini forme ronde céramique</a>
+                        <a class="product-name name" ><?PHP echo $row['nom']; ?> <?PHP echo $row['id']; ?></a>
+                         <input type="hidden" name="ID" value="<?PHP echo $row['id']; ?>">
+                         <input type="hidden" name="QUANTITE" value="<?PHP echo $row['qte']; ?>">
+                         <input type="hidden" name="PRIX" value="<?PHP echo $row['prix']; ?>">
                     </h5>
                     <div class="text">
             <span class="list-desc"></span>
@@ -753,51 +794,13 @@ ou par fax au 01 46 49 10 81 </p>
             </div>                                </div>
                                                                 <div class="product-buttons">
                                     <div class="content_price col-xs-5 col-md-12">
-                                        <span itemprop="price" class="price product-price"><span class="productSalePrice">230.00 DT</span></span><div class="clearfix"></div><div class="button"><a class="btn add-to-cart" ><span class="cssButton normal_button button  button_add_to_cart" onmouseover="this.className='cssButtonHover normal_button button  button_add_to_cart button_add_to_cartHover'" onmouseout="this.className='cssButton normal_button button  button_add_to_cart'">&nbsp;Ajouter au panier&nbsp;</span></a></div><div class="button1"><a class="btn" ><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Détails&nbsp;</span></a></div><br />                                    </div>
+                                        <span itemprop="price" class="price product-price"><span class="productSalePrice"><?PHP echo $row['prix']; ?>  DT</span></span><div class="clearfix"></div><div class="button"><a class="btn add-to-cart" ><input type="submit" name="ajouterprod" value="Ajouter au Panier"><span class="cssButton normal_button button  button_add_to_cart" onmouseover="this.className='cssButtonHover normal_button button  button_add_to_cart button_add_to_cartHover'" onmouseout="this.className='cssButton normal_button button  button_add_to_cart'"></span></a></div><div class="button1"><a class="btn" ><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Détails&nbsp;</span></a></div><br />                                    </div>
                                 </div>
                                             </div>
         </div>
     </li>
-        <li class="col-xs-12">
-        <div class="product-container">
-            <div class="row">
-                                                <div class="img">
-                                        <a ><img src="http://localhost/views/baignoire1.jpg" class="img-responsive" alt="Plumb Craft 5 Position Hand Held Shower Head - 8661" title=" Baignoire encastrable forme carrée" width="200" height="200" class="listingProductImage" /></a>                                </div>
-                                                                <div class="center-block col-xs-4 col-xs-7 col-md-4">
-                                    <h5 itemprop="name">
-                        <a class="product-name name" >Baignoire encastrable forme carrée </a>
-                    </h5>
-                    <div class="text">
-            <span class="list-desc"></span>
-            <span class="grid-desc"></span>
-            </div>                                </div>
-                                                                <div class="product-buttons">
-                                    <div class="content_price col-xs-5 col-md-12">
-                                        <span itemprop="price" class="price product-price"><span class="productSalePrice">25.00 DT</span></span><div class="clearfix"></div><div class="button"><a class="btn add-to-cart" ><span class="cssButton normal_button button  button_add_to_cart" onmouseover="this.className='cssButtonHover normal_button button  button_add_to_cart button_add_to_cartHover'" onmouseout="this.className='cssButton normal_button button  button_add_to_cart'">&nbsp;Ajouter au panier&nbsp;</span></a></div><div class="button1"><a class="btn" ><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Détails&nbsp;</span></a></div><br />                                    </div>
-                                </div>
-                                            </div>
-        </div>
-    </li>
-        <li class="col-xs-12">
-        <div class="product-container">
-            <div class="row">
-                                                <div class="img">
-                                        <a ><img src="http://localhost/views/baignoire-mini-NB.jpg" class="img-responsive" alt="Plumb Craft 6 Spray Setting Fixed Shower Head - 8674000" title=" Baignoire mini couleur noire et blanc " width="200" height="200" class="listingProductImage" /></a>                                </div>
-                                                                <div class="center-block col-xs-4 col-xs-7 col-md-4">
-                                    <h5 itemprop="name">
-                        <a class="product-name name" >Baignoire mini couleur noire et blanc</a>
-                    </h5>
-                    <div class="text">
-            <span class="list-desc"></span>
-            <span class="grid-desc"></span>
-            </div>                                </div>
-                                                                <div class="product-buttons">
-                                    <div class="content_price col-xs-5 col-md-12">
-                                        <span itemprop="price" class="price product-price"><span class="productSalePrice">20.00 DT</span></span><div class="clearfix"></div><div class="button"><a class="btn add-to-cart" ><span class="cssButton normal_button button  button_add_to_cart" onmouseover="this.className='cssButtonHover normal_button button  button_add_to_cart button_add_to_cartHover'" onmouseout="this.className='cssButton normal_button button  button_add_to_cart'">&nbsp;Ajouter au panier&nbsp;</span></a></div><div class="button1"><a class="btn" ><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Détails&nbsp;</span></a></div><br />                                    </div>
-                                </div>
-                                            </div>
-        </div>
-    </li>
+    </form>
+       <?php } ?>
        
     </ul>   
     
@@ -810,7 +813,11 @@ ou par fax au 01 46 49 10 81 </p>
 </div>
 
 <div class="bottom-pg">
-<div id="productsListingBottomNumber" class="navSplitPagesResult back">Affichage <strong>1</strong> à <strong>3</strong> (à <strong>3</strong> produits)</div>
+<div id="productsListingBottomNumber" class="navSplitPagesResult back">Affichage <strong>1</strong> à <strong><?php
+       $produit2C=new produitC ();
+        $produit2C->totalbaignoire() ;  ?></strong> (à <strong><?php
+       $produit2C=new produitC ();
+        $produit2C->totalbaignoire() ;  ?></strong> produits)</div>
 <div class="bottom-paginator">
     <ul id="productsListingListingBottomLinks" class="pagination"> &nbsp;</ul>
 </div>
@@ -870,9 +877,9 @@ ou par fax au 01 46 49 10 81 </p>
         <div class="social col-xs-12 col-sm-3 mb">
           <h2 class="title_btn3">Suivez nous</h2>
             <ul class="social_list">
-              <li><a href="http://www.facebook.com">Facebook</a></li>
+              <li><a href="https://www.facebook.com/Dead-Rabbits-411527309699011/?modal=composer&notif_id=1556550695428671&notif_t=aymt_upsell_tip">Facebook</a></li>
                 <li><a href="http://www.twitter.com">Twitter</a></li>
-                <li><a href="#">RSS</a></li>
+                <li><a href="http://localhost/views/RSS.php">RSS</a></li>
             </ul>
         </div>
         <div class="contact-block col-xs-12 col-sm-3 mb">

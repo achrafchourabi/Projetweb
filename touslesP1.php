@@ -901,6 +901,9 @@ ou par fax au 01 46 49 10 81 </p>
         <!--eof-custom block display--> 
         </div>  
       </div>  
+    </li>
+  
+
   </section>
 <!-- ========== FOOTER ========== -->
 <footer>

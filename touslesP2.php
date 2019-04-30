@@ -710,7 +710,7 @@ ou par fax au 01 46 49 10 81 </p>
 	        <div class="product-container">
             <div class="row">
                                                 <div class="img">
-                                        <a ><img src="http://localhost/views/tuyau1.jpg" class="img-responsive" alt="Waterstone Traditional Deck Mount One Handle Single Hole Pot Fil" title=" Tuyau fin résistant 40 mètres" width="200" height="200" class="listingProductImage" /></a>                                </div>
+                                        <a ><img src="http://localhost/views/tuyau2.jpg" class="img-responsive" alt="Waterstone Traditional Deck Mount One Handle Single Hole Pot Fil" title=" Tuyau fin résistant 40 mètres" width="200" height="200" class="listingProductImage" /></a>                                </div>
                                                                 <div class="center-block col-xs-4 col-xs-7 col-md-4">
                                     <h5 itemprop="name">
                         <a class="product-name name" >Tuyau fin résistant 40 mètres</a>

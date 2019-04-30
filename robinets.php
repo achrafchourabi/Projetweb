@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="generator" content="shopping cart program by Zen Cart&reg;, http://www.zen-cart.com eCommerce">
 <script src="/cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script><link rel="icon" href="C:\Users\Achraf\Desktop\Projet\s2.png" type="image/x-icon">
-<link rel="shortcut icon" href="C:\Users\Achraf\Desktop\Projet\s2.png"" type="image/x-icon">
+<link rel="shortcut icon" href="C:\Users\Achraf\Desktop\Projet\s2.png" type="image/x-icon">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
 <base href="http://livedemo00.template-help.com/zencart_55417/">
 <link rel="canonical" href="http://livedemo00.template-help.com/zencart_55417/index.php?main_page=index&amp;cPath=1_34">
@@ -715,9 +715,14 @@ ou par fax au 01 46 49 10 81 </p>
 
 
 <div id="productListing">
-
+<?php include "C:/wamp64/www/core/produitCore.php";
+?>
 <div class="top-pg">
-<div id="productsListingTopNumber" class="navSplitPagesResult fleft">Affichage <strong>1</strong> à <strong>3</strong> (à <strong>3</strong> produits)</div>
+<div id="productsListingTopNumber" class="navSplitPagesResult fleft">Affichage <strong>1</strong> à <strong><?php
+       $produit2C=new produitC ();
+        $produit2C->totalrobinet() ;  ?></strong> (à <strong><?php
+       $produit2C=new produitC ();
+        $produit2C->totalrobinet() ;  ?></strong> produits)</div>
 <div class="top-paginator">
     <ul id="productsListingListingTopLinks" class="pagination"> &nbsp;</ul>
     <ul class="listing_view hidden-xs">
@@ -738,67 +743,37 @@ ou par fax au 01 46 49 10 81 </p>
 				
 		
 		<ul class="product_list row list">
+       <?PHP
+
+$produit1C=new produitC ();
+$listeproduits=$produit1C->afficherrobinet();
+//var_dump($listeEmployes->fetchAll());
+?>    
+<?PHP
+foreach($listeproduits as $row){
+  ?>
+        <li class="col-xs-12">
+        <div class="product-container">
+            <div class="row">
+                                                <div class="img">
+                                        <a ><img src="<?php echo $row['photo']; ?>" class="img-responsive" alt="Vigo One Handle Single Hole Pull Out Spray Kitchen Faucet" title=" Lavabo moderne tactile/détecteur de mouvements " width="200" height="200" class="listingProductImage" /></a>                                </div>
+                                                                <div class="center-block col-xs-4 col-xs-7 col-md-4">
+                                    <h5 itemprop="name">
+                        <a class="product-name name" ><?PHP echo $row['nom']; ?></a>
+                    </h5>
+                    <div class="text">
+            <span class="list-desc"></span>
+            <span class="grid-desc"></span>
+            </div>                                </div>
+                                                                <div class="product-buttons">
+                                    <div class="content_price col-xs-5 col-md-12">
+                                        <span itemprop="price" class="price product-price"><span class="productSalePrice"><?PHP echo $row['prix']; ?> DT</span></span><div class="clearfix"></div><div class="button"><a class="btn add-to-cart"><span class="cssButton normal_button button  button_add_to_cart" onmouseover="this.className='cssButtonHover normal_button button  button_add_to_cart button_add_to_cartHover'" onmouseout="this.className='cssButton normal_button button  button_add_to_cart'">&nbsp;Ajouter au panier&nbsp;</span></a></div><div class="button1"><a class="btn"><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Détails&nbsp;</span></a></div><br />                                    </div>
+                                </div>
+                                            </div>
+        </div>
+    </li>
+       <?php } ?> 
        
-        <li class="col-xs-12">
-        <div class="product-container">
-            <div class="row">
-                                                <div class="img">
-                                        <a ><img src="http://localhost/views/lavabo1.jpg" class="img-responsive" alt="Vigo One Handle Single Hole Pull Out Spray Kitchen Faucet" title=" Lavabo moderne tactile/détecteur de mouvements " width="200" height="200" class="listingProductImage" /></a>                                </div>
-                                                                <div class="center-block col-xs-4 col-xs-7 col-md-4">
-                                    <h5 itemprop="name">
-                        <a class="product-name name" >Lavabo moderne tactile/détecteur de mouvements</a>
-                    </h5>
-                    <div class="text">
-						<span class="list-desc"></span>
-						<span class="grid-desc"></span>
-						</div>                                </div>
-                                                                <div class="product-buttons">
-                                    <div class="content_price col-xs-5 col-md-12">
-                                        <span itemprop="price" class="price product-price"><span class="productSalePrice">160.00 DT</span></span><div class="clearfix"></div><div class="button"><a class="btn add-to-cart"><span class="cssButton normal_button button  button_add_to_cart" onmouseover="this.className='cssButtonHover normal_button button  button_add_to_cart button_add_to_cartHover'" onmouseout="this.className='cssButton normal_button button  button_add_to_cart'">&nbsp;Ajouter au panier&nbsp;</span></a></div><div class="button1"><a class="btn"><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Détails&nbsp;</span></a></div><br />                                    </div>
-                                </div>
-                                            </div>
-        </div>
-    </li>
-        <li class="col-xs-12">
-        <div class="product-container">
-            <div class="row">
-                                                <div class="img">
-                                        <a href="http://localhost/views/produit1.php"><img src="images/11.png" class="img-responsive" alt="Vigo Single Hole Waterfall Bathroom Faucet Less Handles - VG0300" title="Robinet style moderne Cuisine et Salle de bain " width="200" height="200" class="listingProductImage" /></a>                                </div>
-                                                                <div class="center-block col-xs-4 col-xs-7 col-md-4">
-                                    <h5 itemprop="name">
-                        <a class="product-name name" href="http://localhost/views/produit1.php">Robinet style moderne Cuisine et Salle de bain</a>
-                    </h5>
-                    <div class="text">
-						<span class="list-desc"></span>
-						<span class="grid-desc"></span>
-						</div>                                </div>
-                                                                <div class="product-buttons">
-                                    <div class="content_price col-xs-5 col-md-12">
-                                        <span itemprop="price" class="price product-price">&nbsp;<span class="productSpecialPrice">71.00 DT</span><span class="normalprice">89 DT </span><span class="productPriceDiscount">-20%</span></span><div class="clearfix"></div><div class="button"><a class="btn add-to-cart" ><span class="cssButton normal_button button  button_add_to_cart" onmouseover="this.className='cssButtonHover normal_button button  button_add_to_cart button_add_to_cartHover'" onmouseout="this.className='cssButton normal_button button  button_add_to_cart'">&nbsp;Ajouter au panier&nbsp;</span></a></div><div class="button1"><a class="btn" href="http://localhost/views/produit1.php"><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Détails&nbsp;</span></a></div><br />                                    </div>
-                                </div>
-                                            </div>
-        </div>
-    </li>
-        <li class="col-xs-12">
-        <div class="product-container">
-            <div class="row">
-                                                <div class="img">
-                                        <a href="http://localhost/views/produit2.php"><img src="images/12.png" class="img-responsive" alt="Vigo Tempered Glass Bathroom Sink - VG07505" title=" Lavabo en céramique Bronze style carthage " width="200" height="200" class="listingProductImage" /></a>                                </div>
-                                                                <div class="center-block col-xs-4 col-xs-7 col-md-4">
-                                    <h5 itemprop="name">
-                        <a class="product-name name" href="http://localhost/views/produit2.php">Lavabo en céramique Bronze style carthage</a>
-                    </h5>
-                    <div class="text">
-						<span class="list-desc"></span>
-						<span class="grid-desc"></span>
-						</div>                                </div>
-                                                                <div class="product-buttons">
-                                    <div class="content_price col-xs-5 col-md-12">
-                                        <span itemprop="price" class="price product-price">&nbsp;<span class="productSpecialPrice">90 DT</span><span class="normalprice">124 DT </span><span class="productPriceDiscount">-15%</span></span><div class="clearfix"></div><div class="button"><a class="btn add-to-cart" ><span class="cssButton normal_button button  button_add_to_cart" onmouseover="this.className='cssButtonHover normal_button button  button_add_to_cart button_add_to_cartHover'" onmouseout="this.className='cssButton normal_button button  button_add_to_cart'">&nbsp;Ajouter au panier&nbsp;</span></a></div><div class="button1"><a class="btn" href="http://localhost/views/produit2.php"><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Détails&nbsp;</span></a></div><br />                                    </div>
-                                </div>
-                                            </div>
-        </div>
-    </li>
     </ul>		
 		
 		</div>
@@ -810,7 +785,11 @@ ou par fax au 01 46 49 10 81 </p>
 </div>
 
 <div class="bottom-pg">
-<div id="productsListingBottomNumber" class="navSplitPagesResult back">Affichage<strong>1</strong> à <strong>3</strong> (à <strong>3</strong> produits)</div>
+<div id="productsListingBottomNumber" class="navSplitPagesResult back">Affichage<strong>1</strong> à <strong><?php
+       $produit2C=new produitC ();
+        $produit2C->totalrobinet() ;  ?></strong> (à <strong><?php
+       $produit2C=new produitC ();
+        $produit2C->totalrobinet() ;  ?></strong> produits)</div>
 <div class="bottom-paginator">
     <ul id="productsListingListingBottomLinks" class="pagination"> &nbsp;</ul>
 </div>
@@ -870,9 +849,9 @@ ou par fax au 01 46 49 10 81 </p>
         <div class="social col-xs-12 col-sm-3 mb">
           <h2 class="title_btn3">Suivez nous</h2>
             <ul class="social_list">
-              <li><a href="http://www.facebook.com">Facebook</a></li>
+              <li><a href="https://www.facebook.com/Dead-Rabbits-411527309699011/?modal=composer&notif_id=1556550695428671&notif_t=aymt_upsell_tip">Facebook</a></li>
                 <li><a href="http://www.twitter.com">Twitter</a></li>
-                <li><a href="#">RSS</a></li>
+                <li><a href="http://localhost/views/RSS.php">RSS</a></li>
             </ul>
         </div>
         <div class="contact-block col-xs-12 col-sm-3 mb">

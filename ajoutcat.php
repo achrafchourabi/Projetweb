@@ -12,7 +12,7 @@ var_dump($employe1);
 //Partie3
 $categorie1C=new categorieC();
 $categorie1C->ajoutercategorie($categorie1);
-header('Location: categorie.php');
+header('Location: affichercategorie.php');
 	
 }else{
 	echo "vérifier les champs";

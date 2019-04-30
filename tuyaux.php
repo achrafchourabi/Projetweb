@@ -715,9 +715,14 @@ ou par fax au 01 46 49 10 81 </p>
 
 
 <div id="productListing">
-
+<?php include "C:/wamp64/www/core/produitCore.php";
+?>
 <div class="top-pg">
-<div id="productsListingTopNumber" class="navSplitPagesResult fleft">Affichage <strong>1</strong> à <strong>2</strong> (à <strong>2</strong> produits)</div>
+<div id="productsListingTopNumber" class="navSplitPagesResult fleft">Affichage <strong>1</strong> à <strong><?php
+       $produit2C=new produitC ();
+        $produit2C->totaltuyau() ;  ?></strong> (à <strong><?php
+       $produit2C=new produitC ();
+        $produit2C->totaltuyau() ;  ?></strong> produits)</div>
 <div class="top-paginator">
     <ul id="productsListingListingTopLinks" class="pagination"> &nbsp;</ul>
     <ul class="listing_view hidden-xs">
@@ -738,47 +743,38 @@ ou par fax au 01 46 49 10 81 </p>
 				
 		
 		<ul class="product_list row list">
-        <li class="col-xs-12">
+       <?PHP
+
+$produit1C=new produitC ();
+$listeproduits=$produit1C->affichertuyau();
+//var_dump($listeEmployes->fetchAll());
+?>    
+<?PHP
+foreach($listeproduits as $row){
+  ?>
+         <li class="col-xs-12">
         <div class="product-container">
             <div class="row">
                                                 <div class="img">
-                                        <a ><img src="http://localhost/views/tuyau1.jpg" class="img-responsive" alt="Vigo Two Handle Widespread Pull-Out Spray Bar Faucet with Soap D" title=" Tuyau magique 45 mètres" width="200" height="200" class="listingProductImage" /></a>                                </div>
+                                        <a ><img src="<?php echo $row['photo']; ?>" class="img-responsive" alt="Vigo Two Handle Widespread Pull-Out Spray Bar Faucet with Soap D" title=" Tuyau magique 45 mètres" width="200" height="200" class="listingProductImage" /></a>                                </div>
                                                                 <div class="center-block col-xs-4 col-xs-7 col-md-4">
                                     <h5 itemprop="name">
-                        <a class="product-name name" >Tuyau magique 45 mètres</a>
+                        <a class="product-name name" ><?PHP echo $row['nom']; ?></a>
                     </h5>
                     <div class="text">
-						<span class="list-desc"></span>
-						<span class="grid-desc"></span>
-						</div>                                </div>
+            <span class="list-desc"></span>
+            <span class="grid-desc"></span>
+            </div>                                </div>
                                                                 <div class="product-buttons">
                                     <div class="content_price col-xs-5 col-md-12">
-                                        <span itemprop="price" class="price product-price">&nbsp;<span class="productSpecialPrice">54.00 DT</span><span class="normalprice">70 DT </span><span class="productPriceDiscount">-15%</span></span><div class="clearfix"></div><div class="button"><a class="btn add-to-cart"><span class="cssButton normal_button button  button_add_to_cart" onmouseover="this.className='cssButtonHover normal_button button  button_add_to_cart button_add_to_cartHover'" onmouseout="this.className='cssButton normal_button button  button_add_to_cart'">&nbsp;Ajouter au panier&nbsp;</span></a></div><div class="button1"><a class="btn" ><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Détails&nbsp;</span></a></div><br />                                    </div>
+                                        <span itemprop="price" class="price product-price">&nbsp;<span class="productSpecialPrice"><?php
+       
+        $produit1C->remise() ;  ?> DT</span><span class="normalprice"><?PHP echo $row['prix']; ?> DT </span><span class="productPriceDiscount">-<?PHP echo $row['remise']; ?>%</span></span><div class="clearfix"></div><div class="button"><a class="btn add-to-cart"><span class="cssButton normal_button button  button_add_to_cart" onmouseover="this.className='cssButtonHover normal_button button  button_add_to_cart button_add_to_cartHover'" onmouseout="this.className='cssButton normal_button button  button_add_to_cart'">&nbsp;Ajouter au panier&nbsp;</span></a></div><div class="button1"><a class="btn" ><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Détails&nbsp;</span></a></div><br />                                    </div>
                                 </div>
                                             </div>
         </div>
     </li>
-        <li class="col-xs-12">
-        <div class="product-container">
-            <div class="row">
-                                                <div class="img">
-                                        <a ><img src="http://localhost/views/tuyau2.jpg" class="img-responsive" alt="Waterstone Traditional Deck Mount One Handle Single Hole Pot Fil" title=" Tuyau fin résistant 40 mètres" width="200" height="200" class="listingProductImage" /></a>                                </div>
-                                                                <div class="center-block col-xs-4 col-xs-7 col-md-4">
-                                    <h5 itemprop="name">
-                        <a class="product-name name" >Tuyau fin résistant 40 mètres</a>
-                    </h5>
-                    <div class="text">
-						<span class="list-desc"></span>
-						<span class="grid-desc"></span>
-						</div>                                </div>
-                                                                <div class="product-buttons">
-                                    <div class="content_price col-xs-5 col-md-12">
-                                        <span itemprop="price" class="price product-price">&nbsp;<span class="productSpecialPrice">25 DT</span><span class="normalprice">32.00 DT </span><span class="productPriceDiscount">-25%</span></span><div class="clearfix"></div><div class="button"><a class="btn add-to-cart"><span class="cssButton normal_button button  button_add_to_cart" onmouseover="this.className='cssButtonHover normal_button button  button_add_to_cart button_add_to_cartHover'" onmouseout="this.className='cssButton normal_button button  button_add_to_cart'">&nbsp;Ajouter au panier&nbsp;</span></a></div><div class="button1"><a class="btn" ><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Détails&nbsp;</span></a></div><br />                                    </div>
-                                </div>
-                                            </div>
-        </div>
-    </li>
-        
+        <?php } ?>
     </ul>		
 		
 		</div>
@@ -790,7 +786,11 @@ ou par fax au 01 46 49 10 81 </p>
 </div>
 
 <div class="bottom-pg">
-<div id="productsListingBottomNumber" class="navSplitPagesResult back">Affichage <strong>1</strong> à <strong>2</strong> (à <strong>2</strong> produits)</div>
+<div id="productsListingBottomNumber" class="navSplitPagesResult back">Affichage <strong>1</strong> à <strong><?php
+       $produit2C=new produitC ();
+        $produit2C->totaltuyau() ;  ?></strong> (à <strong><?php
+       $produit2C=new produitC ();
+        $produit2C->totaltuyau() ;  ?></strong> produits)</div>
 <div class="bottom-paginator">
     <ul id="productsListingListingBottomLinks" class="pagination"> &nbsp;</ul>
 </div>
@@ -850,9 +850,9 @@ ou par fax au 01 46 49 10 81 </p>
         <div class="social col-xs-12 col-sm-3 mb">
           <h2 class="title_btn3">Suivez nous</h2>
             <ul class="social_list">
-              <li><a href="http://www.facebook.com">Facebook</a></li>
+              <li><a href="https://www.facebook.com/Dead-Rabbits-411527309699011/?modal=composer&notif_id=1556550695428671&notif_t=aymt_upsell_tip">Facebook</a></li>
                 <li><a href="http://www.twitter.com">Twitter</a></li>
-                <li><a href="#">RSS</a></li>
+                <li><a href="http://localhost/views/RSS.php">RSS</a></li>
             </ul>
         </div>
         <div class="contact-block col-xs-12 col-sm-3 mb">

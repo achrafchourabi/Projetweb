@@ -9,8 +9,8 @@
 <meta name="author" content="The Zen Cart&reg; Team and others" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="generator" content="shopping cart program by Zen Cart&reg;, http://www.zen-cart.com eCommerce">
-<script src="/cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script><link rel="icon" href="C:\Users\Achraf\Desktop\Projet\s2.png" type="image/x-icon">
-<link rel="shortcut icon" href="C:\Users\Achraf\Desktop\Projet\s2.png" type="image/x-icon">
+<script src="/cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script><link rel="icon" href="http://localhost/views/s2.png" type="image/x-icon">
+<link rel="shortcut icon" href="http://localhost/views/s2.png" type="image/x-icon">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
 <base href="http://livedemo00.template-help.com/zencart_55417/">
 <link rel="canonical" href="http://livedemo00.template-help.com/zencart_55417/">
@@ -256,11 +256,11 @@ zcJS.timer = function (options) {
                         <ul class="header_user_info customer_links">
                         <!-- ========== NAVIGATION LINKS ========== --> 
 							                            
-                            <li><a class="login " href="file:///C:/Users/Achraf/Desktop/Projet/pagelogin.html"></a></li>
-                            <li><a class="" href="file:///C:/Users/Achraf/Desktop/Projet/pagelogin.html">Mon compte</a> </li>
+                            <li><a class="login " href="http://localhost/views/pagelogin.php"></a></li>
+                            <li><a class="" href="http://localhost/views/pagelogin.php">Mon compte</a> </li>
                               
-                                                            <li><a class="" href="file:///C:/Users/Achraf/Desktop/Projet/panier.html">Panier</a></li>
-                                <li><a class="" href="file:///C:/Users/Achraf/Desktop/Projet/pagelogin.html">Payer</a></li>
+                                                            <li><a class="" href="http://localhost/views/panier.php">Panier</a></li>
+                                <li><a class="" href="http://localhost/views/pagelogin.php">Payer</a></li>
                                                     <!-- ====================================== -->
                         </ul>
                     </div>
@@ -278,7 +278,7 @@ zcJS.timer = function (options) {
                     <div class="row clearfix">
                         <div id="header_logo" class="col-xs-12 col-sm-3">
                             <!-- ========== LOGO ========== -->
-                                <a href="file:///C:/Users/Achraf/Desktop/Projet/mainpage.html"><img src="C:\Users\Achraf\Desktop\Projet\logostmg.png"  alt="" /></a>
+                                <a href="http://localhost/views/mainpage.php"><img src="http://localhost/views/logostmg.png"  alt="" /></a>
                             <!-- ========================== -->
                         </div>
                         <div class="col-xs-12 col-sm-9 col-md-9">
@@ -311,7 +311,7 @@ zcJS.timer = function (options) {
 								<span class="quantity">1 <em class="spr">x</em> </span><span class="cart-price">$105.40</span>
 							</div>
 						</div><a class="delete" href="http://livedemo00.template-help.com/zencart_55417/index.php?main_page=index&amp;action=remove_product&amp;product_id=12:8731678392cb38b7f2e66b9fcebe5b49"> </a></li><li><div class="cart-price-total"><strong>Total:</strong>&nbsp;<span>$271.40</span></div></li><li><div class="cart-bottom">
-	<a class="btn btn-success" href="file:///C:/Users/Achraf/Desktop/Projet/panier.html "><span class="cssButton">Panier</span></a>
+	<a class="btn btn-success" href="http://localhost/views/panier.php "><span class="cssButton">Panier</span></a>
 	<a class="btn btn-success1" href="http://livedemo00.template-help.com/zencart_55417/index.php?main_page=checkout_shipping"><span class="cssButton normal_button button  button_checkout" onmouseover="this.className='cssButtonHover normal_button button  button_checkout button_checkoutHover'" onmouseout="this.className='cssButton normal_button button  button_checkout'">&nbsp;Payer&nbsp;</span></a></div></li></ul>                                </div> 
                             </div>
                             <!-- =================================== -->	
@@ -342,20 +342,20 @@ zcJS.timer = function (options) {
             <div class="dropdown col-9">
 <div class="levels">
             <ul class="level2"><li data-match-height="cat-ul-gen" class="submenu col-inner">
-<a href="file:///C:/Users/Achraf/Desktop/Projet/salledebain.html">Salle de bain</a><ul class="level3"><li>
-<a href="file:///C:/Users/Achraf/Desktop/Projet/accessoiresSB.html">Accessoires de salle de bain</a></li><li>
-<a href="file:///C:/Users/Achraf/Desktop/Projet/baignoire.html">Baignoires</a></li><li>
+<a href="http://localhost/views/salledebain.php">Salle de bain</a><ul class="level3"><li>
+<a href="http://localhost/views/accessoiresSB.php">Accessoires de salle de bain</a></li><li>
+<a href="http://localhost/views/baignoire.php">Baignoires</a></li><li>
 
-<a href="file:///C:/Users/Achraf/Desktop/Projet/robinets.html">Robinetterie et Lavabo</a></li></ul></li><li data-match-height="cat-ul-gen" class="submenu col-inner">
-<a href="file:///C:/Users/Achraf/Desktop/Projet/MaisonetJardin.html">Maison et Jardin</a><ul class="level3"><li>
-<a href="file:///C:/Users/Achraf/Desktop/Projet/tuyaux.html">Tuyaux et Echangeurs</a></li><li>
+<a href="http://localhost/views/robinets.php">Robinetterie et Lavabo</a></li></ul></li><li data-match-height="cat-ul-gen" class="submenu col-inner">
+<a href="http://localhost/views/MaisonetJardin.php">Maison et Jardin</a><ul class="level3"><li>
+<a href="http://localhost/views/tuyaux.php">Tuyaux et Echangeurs</a></li><li>
 </li><li>
 </li></ul></li><li data-match-height="cat-ul-gen" class="submenu col-inner">
-<a href="file:///C:/Users/Achraf/Desktop/Projet/cuisine.html">Cuisine</a><ul class="level3"><li>
+<a href="http://localhost/views/cuisine.php">Cuisine</a><ul class="level3"><li>
 </li><li>
 </li><li>
 </li></ul></li><li data-match-height="cat-ul-gen" class="submenu col-inner">
-<a>Réparation</a><ul class="level3"><li>
+<a href="http://localhost/STMG">Services</a><ul class="level3"><li>
 <a >Electricité</a></li><li>
 <a >Climatisation</a></li><li>
 <a >Plomberie</a></li></ul></li><li data-match-height="cat-ul-gen" class="submenu col-inner">
@@ -371,8 +371,8 @@ zcJS.timer = function (options) {
                 
                <div class="clearfix"></div>
                <div class="categories-banners">
-				 <div class="item_1"><a href="file:///C:/Users/Achraf/Desktop/Projet/MaisonetJardin.html"><img src="images/cat_banner_1.jpg" class="img-responsive" alt="Water taps" title=" Water taps " width="1170" height="450" /><div class="title"><span>Maison et Jardin</span></div></a>
-		  </div><div class="item_2"><a href="file:///C:/Users/Achraf/Desktop/Projet/cuisine.html"><img src="images/cat_banner_2.jpg" class="img-responsive" alt="Sinks" title=" Sinks " width="1170" height="450" /><div class="title"><span>Cuisine</span></div></a>
+				 <div class="item_1"><a href="http://localhost/views/MaisonetJardin.php"><img src="images/cat_banner_1.jpg" class="img-responsive" alt="Water taps" title=" Water taps " width="1170" height="450" /><div class="title"><span>Maison et Jardin</span></div></a>
+		  </div><div class="item_2"><a href="http://localhost/views/cuisine.php"><img src="images/cat_banner_2.jpg" class="img-responsive" alt="Sinks" title=" Sinks " width="1170" height="450" /><div class="title"><span>Cuisine</span></div></a>
 		  </div><div class="item_3"><a "><img src="images/cat_banner_3.jpg" class="img-responsive" alt="Bathrooms" title=" Bathrooms " width="1170" height="450" /><div class="title"><span>Réparation</span></div></a>
 		  </div>           	  </div>
                  
@@ -388,10 +388,10 @@ zcJS.timer = function (options) {
                                                                     <li class="col-products">
                                         <div class="product-col">
                                                 <div class="img">
-                                                    <a href="file:///C:/Users/Achraf/Desktop/Projet/produit1.html"><img src="images/11.png" class="img-responsive" alt="Vigo Single Hole Waterfall Bathroom Faucet Less Handles - VG0300" title=" Robinet style moderne Cuisine et Salle de bain" width="200" height="200" /></a>                                                </div>
+                                                    <a href="http://localhost/views/produit1.php"><img src="images/11.png" class="img-responsive" alt="Vigo Single Hole Waterfall Bathroom Faucet Less Handles - VG0300" title=" Robinet style moderne Cuisine et Salle de bain" width="200" height="200" /></a>                                                </div>
                                                 <div class="sale-label">Promo</div>
                                             <div class="prod-info">
-                                                <h5><a class="product-name name" href="file:///C:/Users/Achraf/Desktop/Projet/produit1.html">Robinet style moderne Cuisine et Salle de bain</a></h5>
+                                                <h5><a class="product-name name" href="http://localhost/views/produit1.php">Robinet style moderne Cuisine et Salle de bain</a></h5>
                                                 <div class="text">
                                                     The supplies we sell in our store are of premium q...                                                </div>
                                                 <div class="price">
@@ -402,10 +402,10 @@ zcJS.timer = function (options) {
                                                                                 <li class="col-products">
                                         <div class="product-col">
                                                 <div class="img">
-                                                    <a href="file:///C:/Users/Achraf/Desktop/Projet/produit2.html"><img src="images/12.png" class="img-responsive" alt="Vigo Tempered Glass Bathroom Sink - VG07505" title=" Lavabo en céramique Bronze style carthage " width="200" height="200" /></a>                                                </div>
+                                                    <a href="http://localhost/views/produit2.php"><img src="images/12.png" class="img-responsive" alt="Vigo Tempered Glass Bathroom Sink - VG07505" title=" Lavabo en céramique Bronze style carthage " width="200" height="200" /></a>                                                </div>
                                                 <div class="sale-label">Promo</div>
                                             <div class="prod-info">
-                                                <h5><a class="file:///C:/Users/Achraf/Desktop/Projet/produit2.html">Lavabo en céramique Bronze style carthage</a></h5>
+                                                <h5><a class="http://localhost/views/produit2.php">Lavabo en céramique Bronze style carthage</a></h5>
                                                 <div class="text">
                                                     The supplies we sell in our store are of premium q...                                                </div>
                                                 <div class="price">
@@ -444,10 +444,10 @@ zcJS.timer = function (options) {
                                                                                 <li class="col-products">
                                         <div class="product-col">
                                                 <div class="img">
-                                                    <a href="file:///C:/Users/Achraf/Desktop/Projet/produit3.html"><img src="images/15.png" class="img-responsive" alt="Watts 1-in x 1-ft Reinforced PVC Reinforced Braided Vinyl Tubing" title=" Tuyau Jardin 70 mètres Résistant" width="200" height="200" /></a>                                                </div>
+                                                    <a href="http://localhost/views/produit3.php"><img src="images/15.png" class="img-responsive" alt="Watts 1-in x 1-ft Reinforced PVC Reinforced Braided Vinyl Tubing" title=" Tuyau Jardin 70 mètres Résistant" width="200" height="200" /></a>                                                </div>
                                                 <div class="sale-label">Promo</div>
                                             <div class="prod-info">
-                                                <h5><a class="product-name name" href="file:///C:/Users/Achraf/Desktop/Projet/produit3.html">Tuyau Jardin 70 mètres Résistant</a></h5>
+                                                <h5><a class="product-name name" href="http://localhost/views/produit3.php">Tuyau Jardin 70 mètres Résistant</a></h5>
                                                 <div class="text">
                                                     The supplies we sell in our store are of premium q...                                                </div>
                                                 <div class="price">
@@ -485,13 +485,13 @@ zcJS.timer = function (options) {
   <ul class="ez-menu">
       
                 <li class="  first">  
-                    <a href="file:///C:/Users/Achraf/Desktop/Projet/touslesP1.html">
+                    <a href="http://localhost/views/touslesP1.php">
                         <span>Tous les produits</span>   
                     </a>  
                 </li>  
               
                 <li class="  ">  
-                    <a href="file:///C:/Users/Achraf/Desktop/Projet/alaune.html">
+                    <a href="http://localhost/views/alaune.php">
                         <span>A la une</span>   
                     </a>  
                 </li>  
@@ -499,13 +499,13 @@ zcJS.timer = function (options) {
                   
               
                 <li class="  ">  
-                    <a href="file:///C:/Users/Achraf/Desktop/Projet/contacts.html">
+                    <a href="http://localhost/views/contacts.php">
                         <span>Nous contacter</span>   
                     </a>  
                 </li>  
               
                 <li class=" last ">  
-                    <a href="file:///C:/Users/Achraf/Desktop/Projet/faq.html">
+                    <a href="http://localhost/views/faq.php">
                         <span>FAQ</span>   
                     </a>  
                 </li>  
@@ -543,10 +543,10 @@ zcJS.timer = function (options) {
 
             	    <h3>En Général</h3>
                     <ul>
-                	                	<li><a href="file:///C:/Users/Achraf/Desktop/Projet/architecture.html">Architecture du site</a></li>
-                	              		                	<li><a href="file:///C:/Users/Achraf/Desktop/Projet/faq.html">FAQ</a></li>
-                	                	                	<li><a href="file:///C:/Users/Achraf/Desktop/Projet/coupon.html">Utiliser un code</a></li>
-                	               		                	<li><a href="file:///C:/Users/Achraf/Desktop/Projet/nl.html">Se désabonner de la Newsletter</a></li>
+                	                	<li><a href="http://localhost/views/architecture.php">Architecture du site</a></li>
+                	              		                	<li><a href="http://localhost/views/faq.php">FAQ</a></li>
+                	                	                	<li><a href="http://localhost/views/coupon.php">Utiliser un code</a></li>
+                	               		                	<li><a href="http://localhost/views/nl.php">Se désabonner de la Newsletter</a></li>
                 	                     </ul>   
 					<div class="clearfix"></div>
                      <h3 class="second">Client</h3>
@@ -641,9 +641,9 @@ jQuery(window).load(function() {
             <div class="container">
         <div class="banners1">
           <div class="row">
-          <div class="col-sm-4 col-xs-4 item item_1"><a href="file:///C:/Users/Achraf/Desktop/Projet/touslesP1.html"><img src="images/item1.png" class="img-responsive" alt="New Products Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor." title=" Tous les produits " width="370" height="217" /><div class="title"><div class="capt bounce-to-bottom"><h3><b>Tous</b> les produits</h3><p>Retrouvez dans cette rubrique tous les produits du site</p></div></div></a>
-		  </div><div class="col-sm-4 col-xs-4 item item_2"><a href="file:///C:/Users/Achraf/Desktop/Projet/alaune.html"><img src="images/item2.png" class="img-responsive" alt="Special Offer Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor." title=" Tous les produits en promo du moment " width="370" height="217" /><div class="title"><div class="capt bounce-to-bottom"><h3><b>A la</b> Une</h3><p>Tous les produits en promo du moment</p></div></div></a>
-		  </div><div class="col-sm-4 col-xs-4 item item_3"><a href="file:///C:/Users/Achraf/Desktop/Projet/contacts.html"><img src="images/item3.png" class="img-responsive" alt="About Store Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor." title=" Retrouvez nos coordonnées ici " width="370" height="217" /><div class="title"><div class="capt bounce-to-bottom"><h3><b>Nous</b> contacter</h3><p>Retrouvez nos coordonnées ici</p></div></div></a>
+          <div class="col-sm-4 col-xs-4 item item_1"><a href="http://localhost/views/touslesP1.php"><img src="images/item1.png" class="img-responsive" alt="New Products Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor." title=" Tous les produits " width="370" height="217" /><div class="title"><div class="capt bounce-to-bottom"><h3><b>Tous</b> les produits</h3><p>Retrouvez dans cette rubrique tous les produits du site</p></div></div></a>
+		  </div><div class="col-sm-4 col-xs-4 item item_2"><a href="http://localhost/views/alaune.php"><img src="images/item2.png" class="img-responsive" alt="Special Offer Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor." title=" Tous les produits en promo du moment " width="370" height="217" /><div class="title"><div class="capt bounce-to-bottom"><h3><b>A la</b> Une</h3><p>Tous les produits en promo du moment</p></div></div></a>
+		  </div><div class="col-sm-4 col-xs-4 item item_3"><a href="http://localhost/views/contacts.php"><img src="images/item3.png" class="img-responsive" alt="About Store Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor." title=" Retrouvez nos coordonnées ici " width="370" height="217" /><div class="title"><div class="capt bounce-to-bottom"><h3><b>Nous</b> contacter</h3><p>Retrouvez nos coordonnées ici</p></div></div></a>
 		  </div>          </div>
         </div>
       </div>
@@ -773,9 +773,9 @@ jQuery(window).load(function() {
 					</div>
 				</div>
 			</div></li>    <li class="centerBoxContentsFeatured centeredContent back  i3" style="width:25%;"><div class="product-col" data-match-height="featured">
-				<h5><a class="product-name name" href="file:///C:/Users/Achraf/Desktop/Projet/produit3.html">Tuyau jardin 70 mètres Résistant</a></h5>
+				<h5><a class="product-name name" href="http://localhost/views/produit3.php">Tuyau jardin 70 mètres Résistant</a></h5>
 				<div class="img">
-					<a href="file:///C:/Users/Achraf/Desktop/Projet/produit3.html"><img src="images/15.png" class="img-responsive" alt="Watts 1-in x 1-ft Reinforced PVC Reinforced Braided Vinyl Tubing" title=" Tuyau jardin 70 mètres Résistant " width="200" height="200" /></a>
+					<a href="http://localhost/views/produit3.php"><img src="images/15.png" class="img-responsive" alt="Watts 1-in x 1-ft Reinforced PVC Reinforced Braided Vinyl Tubing" title=" Tuyau jardin 70 mètres Résistant " width="200" height="200" /></a>
 					<div class="price">
 						<strong><span class="productSpecialPrice">19.99 DT</span><span class="normalprice">30 DT </span><span class="productPriceDiscount">-30%</span></strong>
 					</div>
@@ -784,7 +784,7 @@ jQuery(window).load(function() {
 				<div class="prod-info">
 					<div class="product-buttons">
 						<div class="button"><a class="btn add-to-cart" ><span class="cssButton normal_button button  button_add_to_cart" onmouseover="this.className='cssButtonHover normal_button button  button_add_to_cart button_add_to_cartHover'" onmouseout="this.className='cssButton normal_button button  button_add_to_cart'">&nbsp;Ajouter au panier&nbsp;</span></a></div>
-						<div class="button1"><a class="btn products-button" href="file:///C:/Users/Achraf/Desktop/Projet/produit3.html"><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Details&nbsp;</span></a></div>
+						<div class="button1"><a class="btn products-button" href="http://localhost/views/produit3.php"><span class="cssButton normal_button button  button_goto_prod_details" onmouseover="this.className='cssButtonHover normal_button button  button_goto_prod_details button_goto_prod_detailsHover'" onmouseout="this.className='cssButton normal_button button  button_goto_prod_details'">&nbsp;Details&nbsp;</span></a></div>
 					</div>
 				</div>
 			</div></li>    
@@ -825,12 +825,12 @@ jQuery(window).load(function() {
 									
 <div class="ezpagesFooterCol col1" style="width: 100%">
 <ul>
-  <li><a href="file:///C:/Users/Achraf/Desktop/Projet/mainpage.html" class="activeILPage">Home</a></li>
-  <li><a href="file:///C:/Users/Achraf/Desktop/Projet/touslesP1.html">Tous les produits</a></li>
-  <li><a href="file:///C:/Users/Achraf/Desktop/Projet/alaune.html">A la une</a></li>
+  <li><a href="http://localhost/views/mainpage1.php" class="activeILPage">Home</a></li>
+  <li><a href="http://localhost/views/touslesP1.php">Tous les produits</a></li>
+  <li><a href="http://localhost/views/alaune.php">A la une</a></li>
   
-  <li><a href="file:///C:/Users/Achraf/Desktop/Projet/contacts.html">Nous contacter</a></li>
-  <li><a href="file:///C:/Users/Achraf/Desktop/Projet/faq.html">FAQ</a></li>
+  <li><a href="http://localhost/views/contacts.php">Nous contacter</a></li>
+  <li><a href="http://localhost/views/faq.php">FAQ</a></li>
 </ul>
 </div>					</div>
         <div class="account col-xs-12 col-sm-3 mb">
@@ -846,9 +846,9 @@ jQuery(window).load(function() {
         <div class="social col-xs-12 col-sm-3 mb">
         	<h2 class="title_btn3">Suivez nous</h2>
             <ul class="social_list">
-            	<li><a href="http://www.facebook.com">Facebook</a></li>
+            	<li><a href="https://www.facebook.com/Dead-Rabbits-411527309699011/?modal=composer&notif_id=1556550695428671&notif_t=aymt_upsell_tip">Facebook</a></li>
                 <li><a href="http://www.twitter.com">Twitter</a></li>
-                <li><a href="#">RSS</a></li>
+                <li><a href="http://localhost/views/RSS.php">RSS</a></li>
             </ul>
         </div>
         <div class="contact-block col-xs-12 col-sm-3 mb">
