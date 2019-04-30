@@ -52,22 +52,16 @@
                             <!-- ====================================== -->
                             </ul>
                         </div>
+                        <div class="col-xs-12 col-md-5 col-lg-5">
+                            <div class="phone">
+                                <p>(800) 234-5678</p>
+                                <span>Hours: 9am-7pm PST M-Fr</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
           </div>
         
-          <div class="bottom">
-            <div class="container">
-                <div class="row clearfix">
-                    <div id="header_logo" class="col-xs-12 col-sm-3">
-                        <!-- ========== LOGO ========== -->
-                            <a href="home.html"><img src="images/logo.png"  width=200px /></a>
-                        <!-- ========================== -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
           <section class="ie9_all">
               <div class="container">
           <div class="row">
@@ -89,51 +83,43 @@
           <div class="tie-indent">
   
   
-      <form action="views\ajoutClient.php" method="post" >
-	  
-	  <fieldset class="second">
+      <form role="form" name="create_account" action="http://livedemo00.template-help.com/zencart_55417/index.php?main_page=create_account" method="post" onsubmit="return check_form(create_account);"><input type="hidden" name="securityToken" value="a9e0ea2106b2b9eff45af0ba221ebb52"><input type="hidden" name="action" value="process"><input type="hidden" name="email_pref_html" value="email_format">    <fieldset class="second">
       <legend>Nouveau? Veillez entrer vos cordonnées!</legend>
       </fieldset>
       <div class="alert forward">* Champs obligatoire</div>
-   
+  <fieldset class="company">
+    <legend>Nom Société</legend>
+  </fieldset>
+  <div class="form-group">
+      <label class="inputLabel" for="company">Nom de votre Société:</label>
+      <input type="text" name="company" size="41" maxlength="64" id="company" class="form-control"></div>
+  
   <fieldset class="address">
     <legend>Vos cordonnées</legend>
   </fieldset>
-  <div class="form-group">
-      <label class="inputLabel" for="lastname">CIN:  <small>*</small></label>
-      <input type="number" name="CIN" size="33" maxlength="32" class="form-control"></div>
-  <div class="form-group">
-      <label class="inputLabel" for="lastname">Nom:  <small>*</small></label>
-      <input type="text" name="nom" size="33" maxlength="32" id="lastname" class="form-control"></div>
+  <div class="gender">
+    <input type="radio" name="gender" value="m" id="gender-male"><label class="radioButtonLabel" for="gender-male">Mr.</label>&nbsp;<input type="radio" name="gender" value="f" id="gender-female"><label class="radioButtonLabel" for="gender-female">Mme.</label><span class="alert">*</span></div>
+  
   <div class="form-group">
       <label class="inputLabel" for="firstname">Prenom:  <small>*</small></label>
-      <input type="text" name="prenom" size="33" maxlength="32" id="firstname" class="form-control"></div>
-  <div class="gender">
-    <input type="radio" name="sexe" value="m" id="gender-male">
-	<label class="radioButtonLabel" for="gender-male">Mr.</label>&nbsp;
-	<input type="radio" name="sexe" value="f" id="gender-female">
-	<label class="radioButtonLabel" for="gender-female">Mme.</label>
-	<span class="alert">*</span></div>
+      <input type="text" name="firstname" size="33" maxlength="32" id="firstname" class="form-control"></div>
   <div class="form-group">
-      <label class="inputLabel" for="dob">Date de naissance:  <small>* (eg. 05/21/1970)</small></label>
-      <input type="text" name="dateNaissance" id="dob" class="form-control"></div>
-  <div class="form-group">
-      <label class="inputLabel" for="company">Nom de votre Société:</label>
-      <input type="text" name="nomSociete" size="41" maxlength="64" id="company" class="form-control"></div>
+      <label class="inputLabel" for="lastname">Nom:  <small>*</small></label>
+      <input type="text" name="lastname" size="33" maxlength="32" id="lastname" class="form-control"></div>
   <div class="form-group">
       <label class="inputLabel" for="street-address">Addresse:  <small>*</small></label>
-      <input type="text" name="addresse" size="41" maxlength="64" id="street-address" class="form-control"></div>
+      <input type="text" name="street_address" size="41" maxlength="64" id="street-address" class="form-control"></div>
   <div class="form-group">
       <label class="inputLabel" for="city">ville:  <small>*</small></label>
-      <input type="text" name="ville" size="33" maxlength="32" id="city" class="form-control"></div>
+      <input type="text" name="city" size="33" maxlength="32" id="city" class="form-control"></div>
   
-  </div>
+  </form></div>
    <div class="form-group">
       <label class="inputLabel" for="postcode">Code Postal:  <small>*</small></label>
-      <input type="text" name="codePostal" size="11" maxlength="10" id="postcode" class="form-control"></div>
+      <input type="text" name="postcode" size="11" maxlength="10" id="postcode" class="form-control"></div>
   <div class="form-group">
       <label class="inputLabel" for="country">Pays:  <small>*</small></label>
-      <select name="pays" id="country" class="form-control">
+      <select name="zone_country_id" id="country" class="form-control">
     <option value="">Please Choose Your Country</option>
     <option value="223" selected="selected">Tunisia</option>
     <option value="240">Aaland Islands</option>
@@ -387,25 +373,34 @@
   </fieldset>
   <div class="form-group">
       <label class="inputLabel" for="telephone">Telephone:  <small>*</small></label>
-      <input type="text" name="tel" size="33" maxlength="32" id="telephone" class="form-control"></div>
+      <input type="text" name="telephone" size="33" maxlength="32" id="telephone" class="form-control"></div>
   
   <div class="form-group">
       <label class="inputLabel" for="fax">Num Fax:  </label>
       <input type="text" name="fax" id="fax" class="form-control"></div>
-    
+  
+  
+  <fieldset>
+  <legend>Votre Age</legend>
+  </fieldset>
+  <div class="form-group">
+      <label class="inputLabel" for="dob">Date de naissance:  <small>* (eg. 05/21/1970)</small></label>
+      <input type="text" name="dob" id="dob" class="form-control"></div>
+  
+  
   <fieldset>
       <legend>Login Detailles</legend>
   </fieldset>
   <div class="form-group">
       <label class="inputLabel" for="email-address">Adresse Email:  <small>*</small></label>
-      <input type="email-address" name="email" size="41" maxlength="96" id="email-address" class="form-control"></div>
+      <input type="text" name="email_address" size="41" maxlength="96" id="email-address" class="form-control"></div>
   <div class="form-group">
   <div class="form-group">
       <label class="inputLabel" for="password-new">Mot de passe:  <small>* (au moin 7 characteres)</small></label>
-      <input type="password" name="mdp" size="21" maxlength="255" id="password-new" class="form-control"></div>
+      <input type="password" name="password" size="21" maxlength="255" id="password-new" class="form-control"></div>
   <div class="form-group">
       <label class="inputLabel" for="password-confirm">Confirmer votre mot de passe:  <small>*</small></label>
-      <input type="password" name="confMdp" size="21" maxlength="255" id="password-confirm" class="form-control"></div>
+      <input type="password" name="confirmation" size="21" maxlength="255" id="password-confirm" class="form-control"></div>
   
   <fieldset>
       <legend>Newsletter </legend>
@@ -416,7 +411,7 @@
   
     </div>    
       <div class="buttonRow"><input type="submit" class="btn btn-success add-to-cart" value="S'inscrire"></div>
-</form>
+
           </body>
 
           

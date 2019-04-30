@@ -1,27 +1,3 @@
-<?php
-include "../entities/services.php";
-include "../core/serviceCore.php";
-include "../entities/Panier.php";
-include "../core/PanierCore.php";
-include "../../config.php";
-include "../entities/servAdmin.php";
-include "../core/servAdminCore.php";
-
-
-$serv=new servAdminCore();
-$listeServ=$serv->afficherSuivie();
-
-  $pan=new PanierCore();
-$listePanier=$pan->afficherPanier();
-$affchage=$pan->afficherPanier();
-$cPanier = $pan->countPanier();
-$total=$pan->somme();
-
-$ClimR=new ServCore();
-$listeClima=$ClimR->afficherClim();
-
-?>
-
 
 
 <!doctype html>
@@ -128,7 +104,7 @@ $listeClima=$ClimR->afficherClim();
                             <div class="shopping_cart" id="shopping_cart">
                                 <!-- ========== SHOPPING CART ========== -->
                                 <div class="shop-box-wrap">
-                                    <span class="cart_title" >Panier</span><span class="st3"> <?php echo $cPanier ?> </span>
+                                    <span class="cart_title" >Panier</span><span class="st3"> </span>
 
                               
                                     <div class="shopping_cart_content" id="shopping_cart_content" >
@@ -138,19 +114,6 @@ $listeClima=$ClimR->afficherClim();
                                     <?PHP
                                     
 
-                                    foreach($listePanier as $row){
-                                      ?>  
-                                        <table>
-                                        <tr>
-                                            <td><div class="none"> <input type="hidden" name="ID_panier" value="<?PHP echo $row['ID_panier'];?>">  <?php echo "Produit" .$row['ID']; echo "| Quantité: ".$row['quantite']; ?></div> </td>
-                                             
-
-                                                                          
-                                        </tr>
-                                       
-                                    <?php } ?>
-                                    <td></td><td><a href="cart.php">modifier</a></td> 
-                                     </table>
                                     
                                 </div>
                                     </form>
