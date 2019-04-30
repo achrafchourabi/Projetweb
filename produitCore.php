@@ -42,6 +42,46 @@ echo "Total Produits : ".$data['total'];
 /*var_dump($data);*/
 echo "Total Produits : ".$data['total'];	
 			}
+			function totalaccSB ()
+			{
+			$pdo = config3::getConnexion();
+		$SQL=$pdo->query("SELECT count(*) as total FROM `produit` where idcat=1  and idsouscat=1") ;
+		$data = $SQL->fetch();
+/*$sommeanswered = $data['total'];*/
+
+/*var_dump($data);*/
+echo $data['total'];	
+			}
+			function totalbaignoire ()
+			{
+			$pdo = config3::getConnexion();
+		$SQL=$pdo->query("SELECT count(*) as total FROM `produit` where idcat=1  and idsouscat=2") ;
+		$data = $SQL->fetch();
+/*$sommeanswered = $data['total'];*/
+
+/*var_dump($data);*/
+echo $data['total'];	
+			}
+			function totalrobinet ()
+			{
+			$pdo = config3::getConnexion();
+		$SQL=$pdo->query("SELECT count(*) as total FROM `produit` where idcat=1  and idsouscat=3") ;
+		$data = $SQL->fetch();
+/*$sommeanswered = $data['total'];*/
+
+/*var_dump($data);*/
+echo $data['total'];	
+			}
+			function totaltuyau ()
+			{
+			$pdo = config3::getConnexion();
+		$SQL=$pdo->query("SELECT count(*) as total FROM `produit` where idcat=2  and idsouscat=4") ;
+		$data = $SQL->fetch();
+/*$sommeanswered = $data['total'];*/
+
+/*var_dump($data);*/
+echo $data['total'];	
+			}
 			function totalproduitmaisonetjardin ()
 			{
 			$pdo = config3::getConnexion();
@@ -125,6 +165,103 @@ echo "Total Produits : ".$data['total'];
 function afficherproduitsalledebain ()
 {
 $sql="SELECT * From produit where idcat=1";
+		
+
+		$db = config3::getConnexion();
+
+		try{
+		$liste=$db->query($sql);
+		return $liste ;
+		  
+
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+}
+function afficheraccSB ()
+{
+$sql="SELECT * From produit where idcat=1 and idsouscat=1";
+		
+
+		$db = config3::getConnexion();
+
+		try{
+		$liste=$db->query($sql);
+		return $liste ;
+		  
+
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+}
+function afficherbaignoire ()
+{
+$sql="SELECT * From produit where idcat=1 and idsouscat=2";
+		
+
+		$db = config3::getConnexion();
+
+		try{
+		$liste=$db->query($sql);
+		return $liste ;
+		  
+
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+}
+function affichertuyau ()
+{
+$sql="SELECT * From produit where idcat=2 and idsouscat=4";
+		
+
+		$db = config3::getConnexion();
+
+		try{
+		$liste=$db->query($sql);
+		return $liste ;
+		  
+
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+}
+
+function remise ()
+{
+$pdo = config3::getConnexion();
+
+		$SQL=$pdo->query("SELECT ROUND((prix*remise)/100 ,2 ) as total FROM `produit` where id=11  ") ;
+		$data = $SQL->fetch();
+/*$sommeanswered = $data['total'];*/
+
+/*var_dump($data);*/
+echo $data['total'];	
+}
+function afficherrobinet ()
+{
+$sql="SELECT * From produit where idcat=1 and idsouscat=3";
+		
+
+		$db = config3::getConnexion();
+
+		try{
+		$liste=$db->query($sql);
+		return $liste ;
+		  
+
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+}
+function affichercuisine ()
+{
+$sql="SELECT * From produit where idcat=3 ";
 		
 
 		$db = config3::getConnexion();
