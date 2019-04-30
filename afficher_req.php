@@ -1,8 +1,3 @@
-<?php
-if (isset(Envoyer) )  
-mail('mehdiqt1@gmail.com', 'Traitement de la reclamation', 'Bonjour, votre reclamation a ete traitee avec succes, merci pour votre fidelite.');
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +36,8 @@ mail('mehdiqt1@gmail.com', 'Traitement de la reclamation', 'Bonjour, votre recla
 <body>
   <section id="container">
     <!-- **********************************************************************************************************************************************************
-        
+       
+
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
@@ -125,7 +121,7 @@ mail('mehdiqt1@gmail.com', 'Traitement de la reclamation', 'Bonjour, votre recla
             </ul>
           </li>
           <li>
-            <a href="inbox.html">
+            <a href="http://localhost/STMP/views/mail.php">
               <i class="fa fa-envelope"></i>
               <span>Mail </span>
               <span class="label label-theme pull-right mail-info">2</span>
@@ -163,45 +159,63 @@ mail('mehdiqt1@gmail.com', 'Traitement de la reclamation', 'Bonjour, votre recla
         <!-- sidebar menu end-->
       </div>
     </aside>
+    <!--sidebar end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
 
-<div>
-<h3 class="tittle"></h3>
-<div align="center">
-<form action="envoyermail.php" method="POST">
-	destinataire
-	<input type="text" name="Email"></br></br></br>
-	objet
-	<input type="text" name="objet"></br></br></br>
-  sujet
-	<textarea name="sujet"></textarea></br></br>
-  
-  
-	<button  class="btn btn-primary"><a  href="mail.php" style="color: #fff">Envoyer</a></button>
-	<script type="text/javascript">
-		function envoie() {
-			var str= "votre mail a ete envoye avec succes";
-			return confirm(str);
-			// body...
-		}
-	</script>
+<?PHP
 
-</form>
+include 'C:\wamp64\www\STMP\core\requeteassC.php';
+$requeteAss1C=new requeteAssC();
+$listeRequete=$requeteAss1C->afficherRequetes();
+
+?>
+<div class="container">
+<div class="table-reponsive checkout-right animated wow slideInUp" date-wow-delay=".5s">
+<table border="1" align="center" style="color:#8e172c" class="timetable_sub" cellpadding="10" cellspacing="5" style="border-color: #8e172c" style="background: #8e172c">
+<tr>
+<th>idReq</th>
+<th>IdClient</th>
+<th>IdService</th>
+<th>Email</th>
+<th>Type </th>
+<th>Objet</th>
+<th>Supprimer</th>
+<th>Modifier</th>
+</tr>
+
+<?PHP
+
+foreach($listeRequete as $row){
+	?>
+	<tr>
+	<th><?PHP echo $row['idReq'];  ?></td>
+	<td><?PHP echo $row['IdClient'];  ?></td>
+  <td><?PHP echo $row['IdService'];  ?></td>
+	<td><?PHP echo $row['Email']; ?></td>
+  <td><?PHP echo $row['typeC'];  ?></td>
+	<td><?PHP echo $row['Objet'];    ?></td>
+
+	<td><form method="POST" action="supprimer_rep.php">
+	<input style="background-color:#ffffff" type="submit" name="supprimer" value="supprimer">
+	<input type="hidden" value="<?PHP echo $row['idReq']; ?>" name="idReq">
+	<td><a href="modifier_req.php?idReq=<?PHP echo $row['idReq']; ?>">
+	Modifier</a></td>
+	</form>
+	</td>
+	
+	</tr>
+	
+	<?PHP
+}
+?>
 </div>
-	 </div>		
-
-
-
-
-
-
-
-
-				</div>
-			</form><br>
-
-
-
-		
+</div>
+</table>
 
 </body>
+
 </html>
+
+

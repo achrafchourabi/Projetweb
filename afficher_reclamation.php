@@ -1,8 +1,3 @@
-<?php
-if (isset(Envoyer) )  
-mail('mehdiqt1@gmail.com', 'Traitement de la reclamation', 'Bonjour, votre reclamation a ete traitee avec succes, merci pour votre fidelite.');
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +36,10 @@ mail('mehdiqt1@gmail.com', 'Traitement de la reclamation', 'Bonjour, votre recla
 <body>
   <section id="container">
     <!-- **********************************************************************************************************************************************************
-        
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+
+    <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
@@ -119,15 +117,15 @@ mail('mehdiqt1@gmail.com', 'Traitement de la reclamation', 'Bonjour, votre recla
               <span>Data Tables</span>
               </a>
             <ul class="sub">
-              <li><a href="basic_table.html">Basic Table</a></li>
+              <li><a href="http://localhost/STMP/views/statistique.php">STAT</a></li>
               <li><a href="responsive_table.html">Responsive Table</a></li>
               <li><a href="advanced_table.html">Advanced Table</a></li>
             </ul>
           </li>
           <li>
-            <a href="inbox.html">
-              <i class="fa fa-envelope"></i>
-              <span>Mail </span>
+            <a href="http://localhost/STMP/views/stat.php">
+              <i class="fa fa-bar-chart-o"></i>
+              <span>stat </span>
               <span class="label label-theme pull-right mail-info">2</span>
               </a>
           </li>
@@ -163,45 +161,87 @@ mail('mehdiqt1@gmail.com', 'Traitement de la reclamation', 'Bonjour, votre recla
         <!-- sidebar menu end-->
       </div>
     </aside>
+    <!--sidebar end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
 
-<div>
-<h3 class="tittle"></h3>
-<div align="center">
-<form action="envoyermail.php" method="POST">
-	destinataire
-	<input type="text" name="Email"></br></br></br>
-	objet
-	<input type="text" name="objet"></br></br></br>
-  sujet
-	<textarea name="sujet"></textarea></br></br>
-  
-  
-	<button  class="btn btn-primary"><a  href="mail.php" style="color: #fff">Envoyer</a></button>
-	<script type="text/javascript">
-		function envoie() {
-			var str= "votre mail a ete envoye avec succes";
-			return confirm(str);
-			// body...
-		}
-	</script>
 
-</form>
+<center>
+	<button> <a href="http://localhost/STMP/views/statistique.php"></a>
+		<img src="images/noti.png">  
+		<?php
+		include 'C:\wamp64\www\STMP\core\reclamationC.php';
+	      $c=new reclamationC;
+	      $count=$c->notification();
+	      foreach($count as $row)
+	        {
+	          echo '<div>'.$row["cnt"].'</div>';
+	        }
+	        $c=new reclamationC;
+	      $count=$c->notificationf();
+
+	    ?>
+
+
+  </button>
+</center>
+
+
+
+
+<?PHP
+
+$reclamation1C=new reclamationC();
+$listeReclamation=$reclamation1C->afficherReclamations();
+?>
+<div class="container">
+<div class="table-reponsive checkout-right animated wow slideInUp" date-wow-delay=".5s">
+<table border="4" align="center"  class="timetable_sub" >
+<tr>
+<th>IdReclamation</th>
+<th>IdClient</th>
+<th>DateAjout</th>
+<th>type</th>
+<th>Sujet</th>
+<th>Etat </th>
+<th>supprimer</th>
+<th>modifier</th>
+</tr>
+
+<?PHP
+
+foreach($listeReclamation as $row){
+	?>
+	<tr>
+	<th><?PHP echo $row['IdReclamation'];  ?></th>
+	<td><?PHP echo $row['IdClient'] ;  ?></td>
+	<td><?PHP echo $row['DateAjout']; ?></td>
+	<td><?PHP echo $row['type']; ?></td>
+	<td><?PHP echo $row['Sujet'];    ?></td>
+	<td><?PHP echo $row['Etat']; ?></td>
+
+	<td><form method="POST" action="supprimer_reclamation.php">
+	<input style="background-color:#ffffff" type="submit" name="supprimer" value="supprimer">
+	<input  type="hidden" value="<?PHP echo $row['IdReclamation']; ?>" name="IdReclamation">
+	</form>
+	</td>
+	<td><a  style="background-color:#ffffff " style="color:#fff"  href="modifier_reclamation.php?IdReclamation=<?PHP echo $row['IdReclamation']; ?>">
+	Modifier </a></td>
+	</tr>
+
+	<?PHP
+	
+	
+}
+?>
+</table>
 </div>
-	 </div>		
-
-
-
-
-
-
-
-
-				</div>
-			</form><br>
-
-
-
-		
+</div>
 
 </body>
 </html>
+
+
+
+
