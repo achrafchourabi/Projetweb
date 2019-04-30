@@ -1,6 +1,5 @@
 <?PHP
-include "../../Services/entities/servAdmin.php";
-include "../../Services/core/servAdminCore.php";
+include "C:/wamp64/www/test/core/evaluationC.php";
 $evaluation1C=new evaluationC();
 $listeEvaluations=$evaluation1C->afficherEvaluations();
 
@@ -104,7 +103,7 @@ $listeEvaluations=$evaluation1C->afficherEvaluations();
               <li><a href="form_validation.html">Gestion Livreurs</a></li>
               <li><a href="advanced_form_components.html">Gestion Livraisons</a></li>
               <li><a href="form_validation.html">Form Validation</a></li>
-              <li><a href="contactform.html">Contact Form</a></li>
+              <li><a href="statistique.php">Satistique</a></li>
             </ul>
           </li>
           <li>
@@ -142,9 +141,8 @@ $listeEvaluations=$evaluation1C->afficherEvaluations();
                   <tr>
                     <td>Id</td>
                     <td>Note</td>
-                    <td>IdTechnicien</td>
-                     <td>etat</td>
-                    
+                    <td>Idlivreur</td>
+                    <td>supprimer</td>
                     <td>moyenne</td>
                   </tr>
                 </thead>
@@ -153,16 +151,19 @@ foreach($listeEvaluations as $row){
   ?>
   <tr>
   <td><?PHP echo $row['Id']; ?></td>
-  <td><?PHP echo $row['note']; ?></td>
-  <td><?PHP echo $row['IdTechnicien']; ?></td>
-   <td><?PHP echo $row['etat']; ?></td>
-  
-  <td><form method="POST" action="moyenneTechnicien.php">
+  <td><?PHP echo $row['Note']; ?></td>
+  <td><?PHP echo $row['Idlivreur']; ?></td>
+  <td><form method="POST" action="supprimerLivreur.php">
+  <input type="submit" name="supprimer" value="supprimer">
+  <input type="hidden" value="<?PHP echo $row['Id']; ?>" name="Id">
+  </form>
+  </td>
+  <td><form method="POST" action="moyenneLivreur.php">
   <input type="submit" name="affecter" value="affecter">
   <input type="hidden" value="<?PHP echo $row['Id']; ?>" name="Id">
   </form>
   </td>
- 
+  <td><a href="modifierLivreur.php?Id=<?PHP echo $row['Id']; ?>">
   Modifier</a></td>
   </tr>
   <?PHP

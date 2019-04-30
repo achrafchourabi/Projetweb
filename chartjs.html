@@ -278,7 +278,7 @@
             </ul>
           </li>
           <li class="sub-menu">
-            <a class="active" href="javascript:;">
+            <a href="javascript:;">
               <i class="fa fa-book"></i>
               <span>Extra Pages</span>
               </a>
@@ -289,7 +289,7 @@
               <li><a href="profile.html">Profile</a></li>
               <li><a href="invoice.html">Invoice</a></li>
               <li><a href="pricing_table.html">Pricing Table</a></li>
-              <li class="active"><a href="faq.html">FAQ</a></li>
+              <li><a href="faq.html">FAQ</a></li>
               <li><a href="404.html">404 Error</a></li>
               <li><a href="500.html">500 Error</a></li>
             </ul>
@@ -325,13 +325,13 @@
               </a>
           </li>
           <li class="sub-menu">
-            <a href="javascript:;">
+            <a class="active" href="javascript:;">
               <i class=" fa fa-bar-chart-o"></i>
               <span>Charts</span>
               </a>
             <ul class="sub">
               <li><a href="morris.html">Morris</a></li>
-              <li><a href="chartjs.html">Chartjs</a></li>
+              <li class="active"><a href="chartjs.html">Chartjs</a></li>
               <li><a href="flot_chart.html">Flot Charts</a></li>
               <li><a href="xchart.html">xChart</a></li>
             </ul>
@@ -362,122 +362,67 @@
         *********************************************************************************************************************************************************** -->
     <!--main content start-->
     <section id="main-content">
-      <section class="wrapper site-min-height">
-        <div class="row mt mb">
-          <div class="col-lg-12">
-            <h3><i class="fa fa-angle-right"></i> F.A.Q</h3>
-            <br>
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <div class="dmbox">
-                <div class="service-icon">
-                  <a class="" href="faq.html#"><i class="dm-icon fa fa-question fa-3x"></i></a>
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> Chartjs Charts</h3>
+        <!-- page start-->
+        <div class="tab-pane" id="chartjs">
+          <div class="row mt">
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> Doughnut</h4>
+                <div class="panel-body text-center">
+                  <canvas id="doughnut" height="300" width="400"></canvas>
                 </div>
-                <h4>1. Knowledge-Base</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s..</p>
               </div>
             </div>
-            <!-- end dmbox -->
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <div class="dmbox">
-                <div class="service-icon">
-                  <a class="" href="faq.html#"><i class="dm-icon fa fa-envelope-o fa-3x"></i></a>
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> Line</h4>
+                <div class="panel-body text-center">
+                  <canvas id="line" height="300" width="400"></canvas>
                 </div>
-                <h4>2. Report a Bug</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s..</p>
               </div>
             </div>
-            <!-- end dmbox -->
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <div class="dmbox">
-                <div class="service-icon">
-                  <a class="" href="faq.html#"><i class="dm-icon fa fa-random fa-3x"></i></a>
-                </div>
-                <h4>3. Submit a Ticket</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s..</p>
-              </div>
-            </div>
-            <!-- end dmbox -->
           </div>
-          <!--  /col-lg-12 -->
-        </div>
-        <!-- /row -->
-        <div class="row content-panel">
-          <h2 class="centered">Most Asked Questions</h2>
-          <div class="col-md-10 col-md-offset-1 mt mb">
-            <div class="accordion" id="accordion2">
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="faq.html#collapseOne">
-                    <em class="glyphicon glyphicon-chevron-right icon-fixed-width"></em>How to purchase this template?
-                    </a>
-                </div>
-                <div id="collapseOne" class="accordion-body collapse in">
-                  <div class="accordion-inner">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                      specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="faq.html#collapseTwo">
-                    <em class="glyphicon glyphicon-chevron-right icon-fixed-width"></em>How can I install my server?
-                    </a>
-                </div>
-                <div id="collapseTwo" class="accordion-body collapse">
-                  <div class="accordion-inner">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                      specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="faq.html#collapseThree">
-                    <em class="glyphicon glyphicon-chevron-right icon-fixed-width"></em>How to change color schemes?
-                    </a>
-                </div>
-                <div id="collapseThree" class="accordion-body collapse">
-                  <div class="accordion-inner">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                      specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="faq.html#collapseFour">
-                    <em class="glyphicon glyphicon-chevron-right icon-fixed-width"></em>How to integrate Revolution Slider?
-                    </a>
-                </div>
-                <div id="collapseFour" class="accordion-body collapse">
-                  <div class="accordion-inner">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                      specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-group">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="faq.html#collapseFive">
-                    <em class="glyphicon glyphicon-chevron-right icon-fixed-width"></em>How Can I get Support?
-                    </a>
-                </div>
-                <div id="collapseFive" class="accordion-body collapse">
-                  <div class="accordion-inner">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                      specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                  </div>
+          <div class="row mt">
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> Radar</h4>
+                <div class="panel-body text-center">
+                  <canvas id="radar" height="300" width="400"></canvas>
                 </div>
               </div>
             </div>
-            <!-- end accordion -->
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> Polar Area</h4>
+                <div class="panel-body text-center">
+                  <canvas id="polarArea" height="300" width="400"></canvas>
+                </div>
+              </div>
+            </div>
           </div>
-          <!-- col-md-10 -->
+          <div class="row mt">
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> Bar</h4>
+                <div class="panel-body text-center">
+                  <canvas id="bar" height="300" width="400"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> Pie</h4>
+                <div class="panel-body text-center">
+                  <canvas id="pie" height="300" width="400"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <!--  /row -->
+        <!-- page end-->
       </section>
-      <!-- /wrapper -->
     </section>
     <!-- /MAIN CONTENT -->
     <!--main content end-->
@@ -496,7 +441,7 @@
           -->
           Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
         </div>
-        <a href="faq.html#" class="go-top">
+        <a href="chartjs.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
           </a>
       </div>
@@ -512,6 +457,8 @@
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
+  <script src="lib/chart-master/Chart.js"></script>
+  <script src="lib/chartjs-conf.js"></script>
 
 </body>
 

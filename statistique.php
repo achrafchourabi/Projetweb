@@ -1,7 +1,4 @@
-<?php
-mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livraison a etait traitee avec succes, merci pour votre fidelite.');
-?>
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -46,11 +43,6 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
         </ul>
       </div>
     </header>
-    <!--header end-->
-    <!-- **********************************************************************************************************************************************************
-        MAIN SIDEBAR MENU
-        *********************************************************************************************************************************************************** -->
-    <!--sidebar start-->
     <aside>
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
@@ -99,8 +91,9 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
               <ul class="sub">
               <li><a href="form_validation.html">Gestion Livreurs</a></li>
               <li><a href="form_validation2.html">Gestion Livraisons</a></li>
-              <li><a href="mail_compose.html">Enovyer un mail</a></li>
-              <li><a href="contactform.html">Contact Form</a></li>
+              <li><a href="afficherEvaluation.php">Gestion Evaluation</a></li>
+              <li><a href="statistique.php">Statistique des évaluatons pour les livreurs</a></li>
+              <li><a href="stat.php">Statistique des évaluatons pour les livreurs</a></li>
             </ul>
           </li>
           <li>
@@ -124,100 +117,60 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
     <!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-        <!-- page start-->
-        <div class="row mt">
-          <div class="col-sm-3">
-            <section class="panel">
-              <div class="panel-body">
-                <ul class="nav nav-pills nav-stacked labels-info ">
-                  <li>
-                </div>
-              </div>
-            </section>
-          </div>
-          <div class="col-sm-9">
-            <section class="panel">
-              <header class="panel-heading wht-bg">
-                <h4 class="gen-case">
-                    Compose Mail
-                    <form action="#" class="pull-right mail-src-position">
-                      <div class="input-append">
-                        <input type="text" class="form-control " placeholder="Search Mail">
-                      </div>
-                    </form>
-                  </h4>
-              </header>
-              <h3 class="tittle"></h3>
-<div align="center">
-<form action="envoyermail.php" method="POST">
-  destinataire
-  <input type="text" name="Email"></br></br></br>
-  objet
-  <input type="text" name="objet"></br></br></br>
-  <textarea name="sujet"></textarea></br></br>
-  <button  class="btn btn-primary"><a  href="mail.php" style="color: #fff">Envoyer</a></button>
-  <script type="text/javascript">
-                  <script type="text/javascript">
-    function envoie() {
-      var str= "votre mail a ete envoye avec succes";
-      return confirm(str);
-      // body...
-    }
-  </script>
-                  </form>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-      </section>
-      <!-- /wrapper -->
-    </section>
-    <!-- /MAIN CONTENT -->
-    <!--main content end-->
-    <!--footer start-->
-    <footer class="site-footer">
-      <div class="text-center">
-        <p>
-          &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
-        </p>
-        <div class="credits">
-          <!--
-            You are NOT allowed to delete the credit link to TemplateMag with free version.
-            You can delete the credit link only if you bought the pro version.
-            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
-            Licensing information: https://templatemag.com/license/
-          -->
-          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
-        </div>
-        <a href="mail_compose.html#" class="go-top">
-          <i class="fa fa-angle-up"></i>
-          </a>
-      </div>
-    </footer>
-    <!--footer end-->
-  </section>
-  <!-- js placed at the end of the document so the pages load faster -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
-  <script src="lib/jquery.scrollTo.min.js"></script>
-  <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
-  <!--common script for all pages-->
-  <script src="lib/common-scripts.js"></script>
-  <!--script for this page-->
-  <script type="text/javascript" src="lib/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
-
-  <script type="text/javascript">
-    //wysihtml5 start
-
-    $('.wysihtml5').wysihtml5();
-
-    //wysihtml5 end
-  </script>
+  <CENTER>
+     <?php  
+ $connect = mysqli_connect("localhost", "root", "", "projetweb");  
+ $query = "SELECT Idlivreur, count(*) as number FROM evaluation group by Note ;";  
+ $result = mysqli_query($connect, $query);  
+ ?>  
+ <!DOCTYPE html>  
+ <html>  
+      <head>  
+           <title>les statistiques de vos evaluations</title>  
+           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
+           <script type="text/javascript">  
+           google.charts.load('current', {'packages':['corechart']});  
+           google.charts.setOnLoadCallback(drawChart);  
+           function drawChart()  
+           {  
+                var data = google.visualization.arrayToDataTable([  
+                          ['Idlivreur', 'number'],  
+                          <?php  
+                          while($row = mysqli_fetch_array($result))  
+                          {  
+                               echo "['".$row["Idlivreur"]."', ".$row["number"]."],";  
+                          }  
+                          ?>  
+                     ]);  
+                var options = {  
+                      title: 'Statistiques selon les evaluations',  
+                      //is3D:true,  
+                      pieHole: 0.4  
+                     };  
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));  
+                chart.draw(data, options);  
+           }  
+           </script>  
+      </head>  
+      <body>  
+           <br /><br />  
+           <div style="width:900px;">  
+                <h3 align="center">Vos requetes d'assistance selon les statistiques</h3>  
+                <br />  
+                <div id="piechart" style="width: 900px; height: 500px;"></div>  
+           </div>  
+      </body>  
+ </html>  
+  </CENTER>
+  
+<script src="js/jquery-1.11.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/chart.min.js"></script>
+  <script src="js/chart-data.js"></script>
+  <script src="js/easypiechart.js"></script>
+  <script src="js/easypiechart-data.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/custom.js"></script>
+  
 </body>
-
 </html>

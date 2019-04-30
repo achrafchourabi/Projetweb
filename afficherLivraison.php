@@ -1,7 +1,10 @@
-<?php
-mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livraison a etait traitee avec succes, merci pour votre fidelite.');
+<?PHP
+include "C:/wamp64/www/test/core/livraisonC.php";
+$livraison1C=new LivraisonC();
+$listeLivraisons=$livraison1C->afficherLivraisons();
+
+//var_dump($listeEmployes->fetchAll());
 ?>
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -98,9 +101,9 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
               </a>
               <ul class="sub">
               <li><a href="form_validation.html">Gestion Livreurs</a></li>
-              <li><a href="form_validation2.html">Gestion Livraisons</a></li>
-              <li><a href="mail_compose.html">Enovyer un mail</a></li>
-              <li><a href="contactform.html">Contact Form</a></li>
+              <li><a href="form_validation2.php">Gestion Livraisons</a></li>
+              <li><a href="afficherEvaluation.php">Gestion Evaluation</a></li>
+              <li><a href="statistique.php">Statistique des évaluatons pour les livreurs</a></li>
             </ul>
           </li>
           <li>
@@ -126,54 +129,82 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <!-- page start-->
+        <h3><i class="fa fa-angle-right"></i> Afficher Livraison</h3>
+        <!-- row -->
         <div class="row mt">
-          <div class="col-sm-3">
-            <section class="panel">
-              <div class="panel-body">
-                <ul class="nav nav-pills nav-stacked labels-info ">
-                  <li>
-                </div>
-              </div>
-            </section>
+          <div class="col-md-12">
+            <div class="content-panel">
+              <table class="table table-striped table-advance table-hover">
+                <hr>
+                <thead>
+                  <tr>
+                    <td>Id</td>
+                    <td>Date</td>
+                    <td>Secteur</td>
+                    <td>Id client</td>
+                    <td>Id Livreur</td>
+                    <td>Etat</td>
+                    <td>supprimer</td>
+                    <td>affecter</td>
+                    <td>modifier</td>
+                  </tr>
+                </thead>
+
+<?PHP
+foreach($listeLivraisons as $row){
+	?>
+	<tr>
+	<td><?PHP echo $row['Id']; ?></td>
+	<td><?PHP echo $row['Date']; ?></td>
+	<td><?PHP echo $row['Secteur']; ?></td>
+  <td><?PHP echo $row['Idclient']; ?></td>
+	<td><?PHP echo $row['Idlivreur']; ?></td>
+	<td><?PHP echo $row['Etat']; ?></td>
+	<td><form method="POST" action="supprimerLivraison.php">
+	<input type="submit" name="supprimer" value="supprimer">
+	<input type="hidden" value="<?PHP echo $row['Id']; ?>" name="Id">
+	</form>
+	</td>
+  <td><a href="affecterLivraison.php?Id=<?PHP echo $row['Id']; ?>">
+  affecter</a>
+  </td>
+	<td><a href="modifierLivraison.php?Id=<?PHP echo $row['Id']; ?>">
+	Modifier</a></td>
+	</tr>
+	<?PHP
+}
+?>
+</table>
+<form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="rechercherLivraison.php">
+  <div class="form-group ">
+                    <label for="champ" class="control-label col-lg-2">Champ a rechercher</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="champ" name="champ" type="text" />
+                    </div>
+                  </div>
+  <input type="submit" name="rechercher" value="rechercher">
+</form>
+<form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="afficherLivraison1.php">
+  <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit" name="TriAsc" value="TriAsc">Tri Asc</button>
+                    </div>
+                  </div>
+</form>
+<form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="afficherLivraison2.php">
+  <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button class="btn btn-theme" type="submit" name="TriDesc" value="TriDesc">Tri Desc</button>
+                    </div>
+                  </div>
+</form>
+</div>
+            <!-- /content-panel -->
           </div>
-          <div class="col-sm-9">
-            <section class="panel">
-              <header class="panel-heading wht-bg">
-                <h4 class="gen-case">
-                    Compose Mail
-                    <form action="#" class="pull-right mail-src-position">
-                      <div class="input-append">
-                        <input type="text" class="form-control " placeholder="Search Mail">
-                      </div>
-                    </form>
-                  </h4>
-              </header>
-              <h3 class="tittle"></h3>
-<div align="center">
-<form action="envoyermail.php" method="POST">
-  destinataire
-  <input type="text" name="Email"></br></br></br>
-  objet
-  <input type="text" name="objet"></br></br></br>
-  <textarea name="sujet"></textarea></br></br>
-  <button  class="btn btn-primary"><a  href="mail.php" style="color: #fff">Envoyer</a></button>
-  <script type="text/javascript">
-                  <script type="text/javascript">
-    function envoie() {
-      var str= "votre mail a ete envoye avec succes";
-      return confirm(str);
-      // body...
-    }
-  </script>
-                  </form>
-                </div>
-              </div>
-            </section>
-          </div>
+          <!-- /col-md-12 -->
         </div>
+        <!-- /row -->
       </section>
-      <!-- /wrapper -->
     </section>
     <!-- /MAIN CONTENT -->
     <!--main content end-->
@@ -192,7 +223,7 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
           -->
           Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
         </div>
-        <a href="mail_compose.html#" class="go-top">
+        <a href="basic_table.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
           </a>
       </div>
@@ -208,16 +239,12 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  <script type="text/javascript" src="lib/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
-
-  <script type="text/javascript">
-    //wysihtml5 start
-
-    $('.wysihtml5').wysihtml5();
-
-    //wysihtml5 end
-  </script>
+  
 </body>
 
 </html>
+
+
+
+
+

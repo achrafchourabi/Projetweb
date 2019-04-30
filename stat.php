@@ -1,19 +1,18 @@
 <?php
-require_once  '../Config.php';
+require_once  'config.php';
 $db=Config::getConnexion();
 
-
 /*
-    $req1= $db->query("SELECT COUNT(*) as nb1 FROM livraison WHERE YEAR(dateLivraison )=YEAR(sysdate())-3  " );
+    $req1= $db->query("SELECT COUNT(*) as nb1 FROM livraison WHERE YEAR(Date )=YEAR(sysdate())-4  " );
     $nb1 = $req1->fetch();
 
-    $req2= $db->query("SELECT COUNT(*) as nb2 FROM livraison WHERE YEAR(dateLivraison )=YEAR(sysdate())-2 " );
+    $req2= $db->query("SELECT COUNT(*) as nb2 FROM livraison WHERE YEAR(Date )=YEAR(sysdate())-3 " );
     $nb2 = $req2->fetch();
 
-    $req3= $db->query("SELECT COUNT(*) as nb3 FROM livraison WHERE YEAR(dateLivraison )=YEAR(sysdate())-1  " );
+    $req3= $db->query("SELECT COUNT(*) as nb3 FROM livraison WHERE YEAR(Date )=YEAR(sysdate())-2  " );
     $nb3 = $req3->fetch();
-*/
-    $req4= $db->query("SELECT COUNT(*) as nb4 FROM reclamation WHERE  YEAR(DateAjout )=YEAR(sysdate()) ");
+    */
+    $req4= $db->query("SELECT COUNT(*) as nb4 FROM livraison WHERE  YEAR(Date)=YEAR (sysdate()) ");
     $nb4 = $req4->fetch();
 
 
@@ -21,7 +20,6 @@ $db=Config::getConnexion();
 $dataPoints = array(array("label"=> date("Y"), "y"=> intval($nb4['nb4'])));
   
 ?>
-
 <script>
 window.onload = function () {
  
@@ -30,7 +28,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
   exportEnabled: true,
   theme: "light2", // "light1", "light2", "dark1", "dark2"
   title:{
-    text: "Statistique des reclamations "
+    text: "Statistique des livraisons "
   },
   data: [{
     type: "column", //change type to bar, line, area, pie, etc

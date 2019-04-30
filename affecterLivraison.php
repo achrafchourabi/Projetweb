@@ -1,7 +1,5 @@
-<?php
-mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livraison a etait traitee avec succes, merci pour votre fidelite.');
-?>
-<!DOCTYPE html>
+<HTML>
+
 <html lang="en">
 
 <head>
@@ -98,9 +96,9 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
               </a>
               <ul class="sub">
               <li><a href="form_validation.html">Gestion Livreurs</a></li>
-              <li><a href="form_validation2.html">Gestion Livraisons</a></li>
-              <li><a href="mail_compose.html">Enovyer un mail</a></li>
-              <li><a href="contactform.html">Contact Form</a></li>
+              <li><a href="form_validation2.php">Gestion Livraisons</a></li>
+              <li><a href="afficherEvaluation.php">Gestion Evaluation</a></li>
+              <li><a href="statistique.php">Statistique des évaluatons pour les livreurs</a></li>
             </ul>
           </li>
           <li>
@@ -124,61 +122,87 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
     <!--main content start-->
-    <section id="main-content">
+
+<body>
+<?PHP
+include "C:/wamp64/www/test/entities/livraison.php";
+include "C:/wamp64/www/test/core/livraisonC.php";
+if (isset($_GET['Id'])){
+  $livraisonC=new LivraisonC();
+    $result=$livraisonC->recupererLivraison($_GET['Id']);
+  foreach($result as $row){
+    $id=$row['Id'];
+    $date=$row['Date'];
+    $secteur=$row['Secteur'];
+    $idclient=$row['Idclient'];
+    $idlivreur=$row['Idlivreur'];
+    $etat=$row['Etat']
+?>
+<form method="POST" >
+<section id="main-content">
       <section class="wrapper">
-        <!-- page start-->
+        <h3><i class="fa fa-angle-right"></i> Affecter Livreur</h3>
+        <!-- BASIC FORM VALIDATION -->
+        <!-- /row -->
+        <!-- FORM VALIDATION -->
         <div class="row mt">
-          <div class="col-sm-3">
-            <section class="panel">
-              <div class="panel-body">
-                <ul class="nav nav-pills nav-stacked labels-info ">
-                  <li>
-                </div>
-              </div>
-            </section>
-          </div>
-          <div class="col-sm-9">
-            <section class="panel">
-              <header class="panel-heading wht-bg">
-                <h4 class="gen-case">
-                    Compose Mail
-                    <form action="#" class="pull-right mail-src-position">
-                      <div class="input-append">
-                        <input type="text" class="form-control " placeholder="Search Mail">
-                      </div>
-                    </form>
-                  </h4>
-              </header>
-              <h3 class="tittle"></h3>
-<div align="center">
-<form action="envoyermail.php" method="POST">
-  destinataire
-  <input type="text" name="Email"></br></br></br>
-  objet
-  <input type="text" name="objet"></br></br></br>
-  <textarea name="sujet"></textarea></br></br>
-  <button  class="btn btn-primary"><a  href="mail.php" style="color: #fff">Envoyer</a></button>
-  <script type="text/javascript">
-                  <script type="text/javascript">
-    function envoie() {
-      var str= "votre mail a ete envoye avec succes";
-      return confirm(str);
-      // body...
-    }
-  </script>
-                  </form>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-      </section>
-      <!-- /wrapper -->
-    </section>
-    <!-- /MAIN CONTENT -->
-    <!--main content end-->
-    <!--footer start-->
-    <footer class="site-footer">
+          <div class="col-lg-12">
+            <div class="form-panel">
+              <div class="form">
+                <form class="cmxform form-horizontal style-form" id="signupForm">
+                  <div class="form-group ">
+                    <label for="Id" class="control-label col-lg-2">Id</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="Id" name="Id" type="number" value="<?PHP echo $id?>"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="Date" class="control-label col-lg-2">Date</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="Date" name="Date" type="date" value="<?PHP echo $date?>"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="Secteur" class="control-label col-lg-2">Secteur</label>
+                    <SELECT name="Secteur" id="Secteur" size="1">
+                    <option value="Tunis">Tunis</option>
+                    <option value="Ariana">Ariana</option>
+                    <option value="Marsa">Marsa</option>
+                    <option value="Autres">Autres</option>  
+                    </SELECT>
+                  </div>
+                  <div class="form-group ">
+                    <label for="Idclient" class="control-label col-lg-2">Id client</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="Idclient" name="Idclient" type="number" value="<?PHP echo $idclient?>" />
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="Idlivreur" class="control-label col-lg-2">Id livreur</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="Idlivreur" name="Idlivreur" type="number" value="<?PHP echo $idlivreur?>"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="Etat" class="control-label col-lg-2">Etat</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="Etat" name="Etat" type="number" value="<?PHP echo $etat?>"/>
+                    </div>
+                  </div>
+                  <form method="POST" action="affecterLivreur.php">
+                  <input type="submit" name="modifier" value="modifier" >
+                  <input type="hidden" value="<?PHP echo $row['Idlivreur']; ?>" name="Idlivreur">
+<?PHP
+  }
+}
+if (isset($_POST['modifier'])){
+  $livraison=new livraison($_POST['Id'],$_POST['Date'],$_POST['Secteur'],$_POST['Idclient'],$_POST['Idlivreur'],$_POST['Etat']);
+  $livraisonC->confirmerAffectation($livraison,$_POST['Id']);
+  echo $_POST['Id'];
+}
+?>
+</body>
+<footer class="site-footer">
       <div class="text-center">
         <p>
           &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
@@ -192,7 +216,7 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
           -->
           Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
         </div>
-        <a href="mail_compose.html#" class="go-top">
+        <a href="form_validation.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
           </a>
       </div>
@@ -208,16 +232,7 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  <script type="text/javascript" src="lib/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+  <script src="lib/form-validation-script.js"></script>
 
-  <script type="text/javascript">
-    //wysihtml5 start
-
-    $('.wysihtml5').wysihtml5();
-
-    //wysihtml5 end
-  </script>
 </body>
 
-</html>

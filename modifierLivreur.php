@@ -1,6 +1,4 @@
-<?php
-mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livraison a etait traitee avec succes, merci pour votre fidelite.');
-?>
+<HTML>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,8 +97,8 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
               <ul class="sub">
               <li><a href="form_validation.html">Gestion Livreurs</a></li>
               <li><a href="form_validation2.html">Gestion Livraisons</a></li>
-              <li><a href="mail_compose.html">Enovyer un mail</a></li>
-              <li><a href="contactform.html">Contact Form</a></li>
+              <li><a href="afficherEvaluation.php">Gestion Evaluation</a></li>
+              <li><a href="statistique.php">Statistique des évaluatons pour les livreurs</a></li>
             </ul>
           </li>
           <li>
@@ -124,61 +122,80 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
     <!--main content start-->
-    <section id="main-content">
+
+<body>
+<?PHP
+include "C:/wamp64/www/test/entities/livreur.php";
+include "C:/wamp64/www/test/core/livreurC.php";
+if (isset($_GET['Id'])){
+	$livreurC=new LivreurC();
+    $result=$livreurC->recupererLivreur($_GET['Id']);
+	foreach($result as $row){
+		$id=$row['Id'];
+		$nom=$row['Nom'];
+		$prenom=$row['Prenom'];
+		$adresse=$row['Adresse'];
+		$secteur=$row['Secteur'];
+?>
+<form method="POST" >
+<section id="main-content">
       <section class="wrapper">
-        <!-- page start-->
+        <h3><i class="fa fa-angle-right"></i> Ajouter Livreur</h3>
+        <!-- BASIC FORM VALIDATION -->
+        <!-- /row -->
+        <!-- FORM VALIDATION -->
         <div class="row mt">
-          <div class="col-sm-3">
-            <section class="panel">
-              <div class="panel-body">
-                <ul class="nav nav-pills nav-stacked labels-info ">
-                  <li>
-                </div>
-              </div>
-            </section>
-          </div>
-          <div class="col-sm-9">
-            <section class="panel">
-              <header class="panel-heading wht-bg">
-                <h4 class="gen-case">
-                    Compose Mail
-                    <form action="#" class="pull-right mail-src-position">
-                      <div class="input-append">
-                        <input type="text" class="form-control " placeholder="Search Mail">
-                      </div>
-                    </form>
-                  </h4>
-              </header>
-              <h3 class="tittle"></h3>
-<div align="center">
-<form action="envoyermail.php" method="POST">
-  destinataire
-  <input type="text" name="Email"></br></br></br>
-  objet
-  <input type="text" name="objet"></br></br></br>
-  <textarea name="sujet"></textarea></br></br>
-  <button  class="btn btn-primary"><a  href="mail.php" style="color: #fff">Envoyer</a></button>
-  <script type="text/javascript">
-                  <script type="text/javascript">
-    function envoie() {
-      var str= "votre mail a ete envoye avec succes";
-      return confirm(str);
-      // body...
-    }
-  </script>
-                  </form>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-      </section>
-      <!-- /wrapper -->
-    </section>
-    <!-- /MAIN CONTENT -->
-    <!--main content end-->
-    <!--footer start-->
-    <footer class="site-footer">
+          <div class="col-lg-12">
+            <div class="form-panel">
+              <div class="form">
+                <form class="cmxform form-horizontal style-form" id="signupForm" onsubmit="return verifForm(this)">
+                	<div class="form-group ">
+                    <label for="Id" class="control-label col-lg-2">Id</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="Id" name="Id" type="number" value="<?PHP echo $id?>"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="Nom" class="control-label col-lg-2">Nom</label>
+                    <div class="col-lg-10">
+                      <input class=" form-control" id="Nom" name="Nom" type="text" value="<?PHP echo $nom?>" onblur="verifnom(this)"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="Prenom" class="control-label col-lg-2">Prenom</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="Prenom" name="Prenom" type="text" value="<?PHP echo $prenom?>" onblur="verifprenom(this)"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="Adresse" class="control-label col-lg-2">Adresse</label>
+                    <div class="col-lg-10">
+                      <input class="form-control " id="Adresse" name="Adresse" type="mail" value="<?PHP echo $adresse?>" onblur="verifadresse(this)"/>
+                    </div>
+                  </div>
+                  <div class="form-group ">
+                    <label for="Secteur" class="control-label col-lg-2">Secteur</label>
+                    <SELECT name="Secteur" id="Secteur" size="1">
+                    <option value="Tunis">Tunis</option>
+                    <option value="Ariana">Ariana</option>
+                    <option value="Marsa">Marsa</option>
+                    <option value="Autres">Autres</option>  
+                    </SELECT>
+                  </div>
+                  <input type="submit" name="modifier" value="modifier" href="afficherLivreur.php"></td>
+                  <input type="hidden" name="Id" value="<?PHP echo $_GET['Id'];?>"></input>
+<?PHP
+	}
+}
+if (isset($_POST['modifier'])){
+	$livreur=new livreur($_POST['Id'],$_POST['Nom'],$_POST['Prenom'],$_POST['Adresse'],$_POST['Secteur']);
+	$livreurC->modifierLivreur($livreur,$_POST['Id']);
+	echo $_POST['Id'];
+
+}
+?>
+</body>
+<footer class="site-footer">
       <div class="text-center">
         <p>
           &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
@@ -192,7 +209,7 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
           -->
           Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
         </div>
-        <a href="mail_compose.html#" class="go-top">
+        <a href="form_validation.html#" class="go-top">
           <i class="fa fa-angle-up"></i>
           </a>
       </div>
@@ -208,16 +225,75 @@ mail('heamorri0@gmail.com', 'Traitement de la livraison', 'Bonjour, votre livrai
   <!--common script for all pages-->
   <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
-  <script type="text/javascript" src="lib/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
-  <script type="text/javascript" src="lib/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+  <script src="lib/form-validation-script.js"></script>
 
-  <script type="text/javascript">
-    //wysihtml5 start
-
-    $('.wysihtml5').wysihtml5();
-
-    //wysihtml5 end
-  </script>
 </body>
+<script type="text/javascript">
+    function surligne(champ, erreur)
+{
+   if(erreur)
+      champ.style.backgroundColor = "#fba";
+   else
+      champ.style.backgroundColor = "";
+}
 
-</html>
+
+function verifnom(champ)
+{
+   if(champ.value.length < 5 || champ.value.length > 25)
+   {
+      surligne(champ, true);
+      return false;
+   }
+   else
+   {
+      surligne(champ, false);
+      return true;
+   }
+}
+function verifprenom(champ)
+{
+   if(champ.value.length < 5 || champ.value.length > 25)
+   {
+      surligne(champ, true);
+      return false;
+   }
+   else
+   {
+      surligne(champ, false);
+      return true;
+   }
+}
+
+function verifadresse(champ)
+{
+   if(champ.value.length < 20 || champ.value.length > 40)
+   {
+      surligne(champ, true);
+      return false;
+   }
+   else
+   {
+      surligne(champ, false);
+      return true;
+   }
+}
+
+
+function verifForm(f)
+{
+   var pseudoOk = verifnom(f.Nom);
+   var mailOk = verifadresse(f.Adresse);
+   var prenomOk= verifprenom(f.Prenom)
+   
+   if(pseudoOk && mailOk && prenomOk)
+      return true;
+   else
+   {
+      alert("Veuillez remplir correctement tous les champs");
+      return false;
+   }
+}
+</script>
+
+</HTMl>
